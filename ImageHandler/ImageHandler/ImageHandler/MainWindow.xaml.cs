@@ -2,7 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Drawing;
-using System;
+using Image = System.Drawing.Image;
+using ImageWPF = System.Windows.Controls.Image;
 
 namespace ImageHandler
 {
@@ -18,11 +19,15 @@ namespace ImageHandler
 
         private void ImageClicked(object sender, RoutedEventArgs e)
         {
-            Image selectedImage = (Image) e.Source;
-            sizeOfImage.Content = "Размер файла в пикселях: " + (MainImage.ActualHeight * MainImage.ActualWidth);
-            resolutionOfImage.Content = "Разрешение файла: " + selectedImage.ActualWidth + "x" + selectedImage.ActualHeight;
+            ImageWPF selectedImage = (ImageWPF) e.Source;
             MainImage.Source = selectedImage.Source;
-            
+            Image sourceBitmap = Image.FromFile(MainImage.Source.ToString().Substring(8));
+            sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
+            resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
+        }
+        
+        private void AddPictures(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

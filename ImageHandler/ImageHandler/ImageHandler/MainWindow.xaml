@@ -30,7 +30,7 @@
                 <Label Content="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage"></Label> 
                 <Label Content="Разрешение файла: " Foreground="Azure" FontFamily="OpenSans" x:Name="resolutionOfImage"></Label>
                 <Label Content="Код текущего пикселя: " Foreground="Azure" FontFamily="OpenSans" x:Name="currentPixel"></Label>
-                <Button x:Name="addPictures" Content="Добавить изображения" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
             </StackPanel>
         </Grid>
        
