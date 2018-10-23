@@ -12,43 +12,72 @@
     <session id="-238591286">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.82" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="cs" value="1" />
           <entry key="xaml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="C#" value="1" />
           <entry key="XAML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="xaml" value="7" />
+          <entry key="cs" value="737" />
+          <entry key="xaml" value="663" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="XAML" value="7" />
+          <entry key="C#" value="737" />
+          <entry key="XAML" value="663" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ImageHandler/MainWindow.xaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+            <state relative-caret-position="96">
+              <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
               <folding>
-                <marker date="1540294608765" expanded="true" signature="0:522" ph="&lt;&lt;Grid&gt;&#10;        &lt;Label&gt;КЕК&lt;/Label&gt;&#10;        &#10;    &lt;/Grid&gt;.../&gt;" />
-                <marker date="1540294608765" expanded="true" signature="458:512" ph="&lt;&lt;Label&gt;КЕК&lt;/Label&gt;.../&gt;" />
+                <marker date="1540307746851" expanded="true" signature="0:2081" ph="&lt;&lt;Grid Background=&quot;Black&quot;&gt;&#10;        &lt;Grid.ColumnDefinitions&gt;&#10;            &lt;ColumnDefinition Width=&quot;*&quot; /&gt;&#10;            &lt;ColumnDefinition Width=&quot;2.5*&quot; /&gt;&#10;        &lt;/Grid.ColumnDefinitions&gt;&#10;        &lt;ScrollViewer Grid.Column=&quot;0&quot; VerticalScrollBarVisibility=&quot;Hidden&quot;&gt;&#10;            &lt;StackPanel Image.MouseDown=&quot;ImageClicked&quot;&gt;&#10;                &lt;Image Source=&quot;D:/1.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image1&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/2.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image2&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/3.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image3&quot;/&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/ScrollViewer&gt;&#10;        &#10;        &lt;Grid Grid.Column=&quot;1&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;3*&quot;/&gt;&#10;                &lt;RowDefinition Height=&quot;*&quot;/&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Image Grid.Row=&quot;0&quot; x:Name=&quot;MainImage&quot; Source=&quot;D:/3.jpg&quot;/&gt;&#10;                &#10;            &lt;StackPanel Grid.Row=&quot;1&quot;&gt;&#10;                &lt;Label Content=&quot;Размер файла в пикселях: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;sizeOfImage&quot;&gt;&lt;/Label&gt; &#10;                &lt;Label Content=&quot;Разрешение файла: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;resolutionOfImage&quot;&gt;&lt;/Label&gt;&#10;                &lt;Label Content=&quot;Код текущего пикселя: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;currentPixel&quot;&gt;&lt;/Label&gt;&#10;                &lt;Button x:Name=&quot;addPictures&quot; Content=&quot;Добавить изображения&quot; Foreground=&quot;Azure&quot; Background=&quot;DimGray&quot; Width=&quot;150px&quot; HorizontalAlignment=&quot;Left&quot;&gt;&lt;/Button&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/Grid&gt;&#10;       &#10; &#10;    &lt;/Grid&gt;.../&gt;" />
+                <marker date="1540307746851" expanded="true" signature="459:2071" ph="&lt;&lt;Grid.ColumnDefinitions&gt;&#10;            &lt;ColumnDefinition Width=&quot;*&quot; /&gt;&#10;            &lt;ColumnDefinition Width=&quot;2.5*&quot; /&gt;&#10;        &lt;/Grid.ColumnDefinitions&gt; &lt;ScrollViewer Grid.Column=&quot;0&quot; VerticalScrollBarVisibility=&quot;Hidden&quot;&gt;&#10;            &lt;StackPanel Image.MouseDown=&quot;ImageClicked&quot;&gt;&#10;                &lt;Image Source=&quot;D:/1.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image1&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/2.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image2&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/3.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image3&quot;/&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/ScrollViewer&gt; &lt;Grid Grid.Column=&quot;1&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;3*&quot;/&gt;&#10;                &lt;RowDefinition Height=&quot;*&quot;/&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Image Grid.Row=&quot;0&quot; x:Name=&quot;MainImage&quot; Source=&quot;D:/3.jpg&quot;/&gt;&#10;                &#10;            &lt;StackPanel Grid.Row=&quot;1&quot;&gt;&#10;                &lt;Label Content=&quot;Размер файла в пикселях: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;sizeOfImage&quot;&gt;&lt;/Label&gt; &#10;                &lt;Label Content=&quot;Разрешение файла: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;resolutionOfImage&quot;&gt;&lt;/Label&gt;&#10;                &lt;Label Content=&quot;Код текущего пикселя: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;currentPixel&quot;&gt;&lt;/Label&gt;&#10;                &lt;Button x:Name=&quot;addPictures&quot; Content=&quot;Добавить изображения&quot; Foreground=&quot;Azure&quot; Background=&quot;DimGray&quot; Width=&quot;150px&quot; HorizontalAlignment=&quot;Left&quot;&gt;&lt;/Button&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/Grid&gt;.../&gt;" />
+                <marker date="1540307746851" expanded="true" signature="493:640" ph="&lt;&lt;ColumnDefinition Width=&quot;*&quot; /&gt; &lt;ColumnDefinition Width=&quot;2.5*&quot; /&gt;.../&gt;" />
+                <marker date="1540307746851" expanded="true" signature="649:1128" ph="&lt;&lt;StackPanel Image.MouseDown=&quot;ImageClicked&quot;&gt;&#10;                &lt;Image Source=&quot;D:/1.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image1&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/2.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image2&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/3.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image3&quot;/&gt;&#10;            &lt;/StackPanel&gt;.../&gt;" />
+                <marker date="1540307746851" expanded="true" signature="729:1104" ph="&lt;&lt;Image Source=&quot;D:/1.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image1&quot;/&gt; &lt;Image Source=&quot;D:/2.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image2&quot;/&gt; &lt;Image Source=&quot;D:/3.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image3&quot;/&gt;.../&gt;" />
+                <marker date="1540307746851" expanded="true" signature="1146:2049" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;3*&quot;/&gt;&#10;                &lt;RowDefinition Height=&quot;*&quot;/&gt;&#10;            &lt;/Grid.RowDefinitions&gt; &lt;Image Grid.Row=&quot;0&quot; x:Name=&quot;MainImage&quot; Source=&quot;D:/3.jpg&quot;/&gt; &lt;StackPanel Grid.Row=&quot;1&quot;&gt;&#10;                &lt;Label Content=&quot;Размер файла в пикселях: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;sizeOfImage&quot;&gt;&lt;/Label&gt; &#10;                &lt;Label Content=&quot;Разрешение файла: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;resolutionOfImage&quot;&gt;&lt;/Label&gt;&#10;                &lt;Label Content=&quot;Код текущего пикселя: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;currentPixel&quot;&gt;&lt;/Label&gt;&#10;                &lt;Button x:Name=&quot;addPictures&quot; Content=&quot;Добавить изображения&quot; Foreground=&quot;Azure&quot; Background=&quot;DimGray&quot; Width=&quot;150px&quot; HorizontalAlignment=&quot;Left&quot;&gt;&lt;/Button&gt;&#10;            &lt;/StackPanel&gt;.../&gt;" />
+                <marker date="1540307746851" expanded="true" signature="1181:1326" ph="&lt;&lt;RowDefinition Height=&quot;3*&quot;/&gt; &lt;RowDefinition Height=&quot;*&quot;/&gt;.../&gt;" />
+                <marker date="1540307746851" expanded="true" signature="1427:2033" ph="&lt;&lt;Label Content=&quot;Размер файла в пикселях: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;sizeOfImage&quot;&gt;&lt;/Label&gt; &lt;Label Content=&quot;Разрешение файла: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;resolutionOfImage&quot;&gt;&lt;/Label&gt; &lt;Label Content=&quot;Код текущего пикселя: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;currentPixel&quot;&gt;&lt;/Label&gt; &lt;Button x:Name=&quot;addPictures&quot; Content=&quot;Добавить изображения&quot; Foreground=&quot;Azure&quot; Background=&quot;DimGray&quot; Width=&quot;150px&quot; HorizontalAlignment=&quot;Left&quot;&gt;&lt;/Button&gt;.../&gt;" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ImageHandler/MainWindow.xaml.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="22" column="123" selection-start-line="22" selection-start-column="123" selection-end-line="22" selection-end-column="123" />
+              <folding>
+                <marker date="1540307550579" expanded="true" signature="6:111" ph="..." />
+                <marker date="1540307550579" expanded="true" signature="135:799" ph="{...}" />
+                <marker date="1540307550579" expanded="true" signature="142:220" ph="/// Interaction logic for MainWindow.xaml ... " />
+                <marker date="1540307550579" expanded="true" signature="256:797" ph="{...}" />
+                <marker date="1540307550579" expanded="true" signature="290:345" ph="{...}" />
+                <marker date="1540307550579" expanded="true" signature="414:791" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -58,26 +87,27 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/ImageHandler/MainWindow.xaml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ImageHandler/MainWindow.xaml.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/ImageHandler/MainWindow.xaml.cs" />
         <option value="$PROJECT_DIR$/ImageHandler/MainWindow.xaml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="20" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="117" />
+    <option name="y" value="4" />
+    <option name="width" value="1474" />
+    <option name="height" value="846" />
   </component>
   <component name="ProjectView">
     <navigator currentView="SolutionExplorer" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
@@ -101,6 +131,7 @@
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -151,28 +182,28 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" weight="0.30911064" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="XAML Preview" weight="0.3286334" />
-      <window_info anchor="bottom" id="Unit Tests" weight="0.329718" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Build" weight="0.329718" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4978308" visible="true" weight="0.18176973" />
+      <window_info x="789" y="313" width="341" height="414" id="Structure" order="1" sideWeight="0.5021692" side_tool="true" visible="true" weight="0.18176973" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.329718" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2537961" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" weight="0.30911064" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unit Tests" order="10" weight="0.18980478" />
+      <window_info anchor="bottom" x="-1367" y="32" width="1369" height="692" id="XAML Preview" order="11" show_stripe_button="false" type="FLOATING" weight="0.112798266" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Build" order="13" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="4" />
     </layout>
   </component>
   <component name="XDebuggerManager">
@@ -186,13 +217,34 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ImageHandler/MainWindow.xaml.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="22" column="123" selection-start-line="22" selection-start-column="123" selection-end-line="22" selection-end-column="123" />
+          <folding>
+            <marker date="1540307550579" expanded="true" signature="6:111" ph="..." />
+            <marker date="1540307550579" expanded="true" signature="135:799" ph="{...}" />
+            <marker date="1540307550579" expanded="true" signature="142:220" ph="/// Interaction logic for MainWindow.xaml ... " />
+            <marker date="1540307550579" expanded="true" signature="256:797" ph="{...}" />
+            <marker date="1540307550579" expanded="true" signature="290:345" ph="{...}" />
+            <marker date="1540307550579" expanded="true" signature="414:791" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ImageHandler/MainWindow.xaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="8" lean-forward="true" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        <state relative-caret-position="96">
+          <caret line="6" column="24" lean-forward="true" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
           <folding>
-            <marker date="1540294608765" expanded="true" signature="0:522" ph="&lt;&lt;Grid&gt;&#10;        &lt;Label&gt;КЕК&lt;/Label&gt;&#10;        &#10;    &lt;/Grid&gt;.../&gt;" />
-            <marker date="1540294608765" expanded="true" signature="458:512" ph="&lt;&lt;Label&gt;КЕК&lt;/Label&gt;.../&gt;" />
+            <marker date="1540307746851" expanded="true" signature="0:2081" ph="&lt;&lt;Grid Background=&quot;Black&quot;&gt;&#10;        &lt;Grid.ColumnDefinitions&gt;&#10;            &lt;ColumnDefinition Width=&quot;*&quot; /&gt;&#10;            &lt;ColumnDefinition Width=&quot;2.5*&quot; /&gt;&#10;        &lt;/Grid.ColumnDefinitions&gt;&#10;        &lt;ScrollViewer Grid.Column=&quot;0&quot; VerticalScrollBarVisibility=&quot;Hidden&quot;&gt;&#10;            &lt;StackPanel Image.MouseDown=&quot;ImageClicked&quot;&gt;&#10;                &lt;Image Source=&quot;D:/1.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image1&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/2.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image2&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/3.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image3&quot;/&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/ScrollViewer&gt;&#10;        &#10;        &lt;Grid Grid.Column=&quot;1&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;3*&quot;/&gt;&#10;                &lt;RowDefinition Height=&quot;*&quot;/&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Image Grid.Row=&quot;0&quot; x:Name=&quot;MainImage&quot; Source=&quot;D:/3.jpg&quot;/&gt;&#10;                &#10;            &lt;StackPanel Grid.Row=&quot;1&quot;&gt;&#10;                &lt;Label Content=&quot;Размер файла в пикселях: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;sizeOfImage&quot;&gt;&lt;/Label&gt; &#10;                &lt;Label Content=&quot;Разрешение файла: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;resolutionOfImage&quot;&gt;&lt;/Label&gt;&#10;                &lt;Label Content=&quot;Код текущего пикселя: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;currentPixel&quot;&gt;&lt;/Label&gt;&#10;                &lt;Button x:Name=&quot;addPictures&quot; Content=&quot;Добавить изображения&quot; Foreground=&quot;Azure&quot; Background=&quot;DimGray&quot; Width=&quot;150px&quot; HorizontalAlignment=&quot;Left&quot;&gt;&lt;/Button&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/Grid&gt;&#10;       &#10; &#10;    &lt;/Grid&gt;.../&gt;" />
+            <marker date="1540307746851" expanded="true" signature="459:2071" ph="&lt;&lt;Grid.ColumnDefinitions&gt;&#10;            &lt;ColumnDefinition Width=&quot;*&quot; /&gt;&#10;            &lt;ColumnDefinition Width=&quot;2.5*&quot; /&gt;&#10;        &lt;/Grid.ColumnDefinitions&gt; &lt;ScrollViewer Grid.Column=&quot;0&quot; VerticalScrollBarVisibility=&quot;Hidden&quot;&gt;&#10;            &lt;StackPanel Image.MouseDown=&quot;ImageClicked&quot;&gt;&#10;                &lt;Image Source=&quot;D:/1.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image1&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/2.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image2&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/3.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image3&quot;/&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/ScrollViewer&gt; &lt;Grid Grid.Column=&quot;1&quot;&gt;&#10;            &lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;3*&quot;/&gt;&#10;                &lt;RowDefinition Height=&quot;*&quot;/&gt;&#10;            &lt;/Grid.RowDefinitions&gt;&#10;            &lt;Image Grid.Row=&quot;0&quot; x:Name=&quot;MainImage&quot; Source=&quot;D:/3.jpg&quot;/&gt;&#10;                &#10;            &lt;StackPanel Grid.Row=&quot;1&quot;&gt;&#10;                &lt;Label Content=&quot;Размер файла в пикселях: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;sizeOfImage&quot;&gt;&lt;/Label&gt; &#10;                &lt;Label Content=&quot;Разрешение файла: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;resolutionOfImage&quot;&gt;&lt;/Label&gt;&#10;                &lt;Label Content=&quot;Код текущего пикселя: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;currentPixel&quot;&gt;&lt;/Label&gt;&#10;                &lt;Button x:Name=&quot;addPictures&quot; Content=&quot;Добавить изображения&quot; Foreground=&quot;Azure&quot; Background=&quot;DimGray&quot; Width=&quot;150px&quot; HorizontalAlignment=&quot;Left&quot;&gt;&lt;/Button&gt;&#10;            &lt;/StackPanel&gt;&#10;        &lt;/Grid&gt;.../&gt;" />
+            <marker date="1540307746851" expanded="true" signature="493:640" ph="&lt;&lt;ColumnDefinition Width=&quot;*&quot; /&gt; &lt;ColumnDefinition Width=&quot;2.5*&quot; /&gt;.../&gt;" />
+            <marker date="1540307746851" expanded="true" signature="649:1128" ph="&lt;&lt;StackPanel Image.MouseDown=&quot;ImageClicked&quot;&gt;&#10;                &lt;Image Source=&quot;D:/1.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image1&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/2.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image2&quot;/&gt;&#10;                &lt;Image Source=&quot;D:/3.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image3&quot;/&gt;&#10;            &lt;/StackPanel&gt;.../&gt;" />
+            <marker date="1540307746851" expanded="true" signature="729:1104" ph="&lt;&lt;Image Source=&quot;D:/1.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image1&quot;/&gt; &lt;Image Source=&quot;D:/2.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image2&quot;/&gt; &lt;Image Source=&quot;D:/3.jpg&quot; HorizontalAlignment=&quot;Center&quot; Width=&quot;350px&quot; x:Name=&quot;Image3&quot;/&gt;.../&gt;" />
+            <marker date="1540307746851" expanded="true" signature="1146:2049" ph="&lt;&lt;Grid.RowDefinitions&gt;&#10;                &lt;RowDefinition Height=&quot;3*&quot;/&gt;&#10;                &lt;RowDefinition Height=&quot;*&quot;/&gt;&#10;            &lt;/Grid.RowDefinitions&gt; &lt;Image Grid.Row=&quot;0&quot; x:Name=&quot;MainImage&quot; Source=&quot;D:/3.jpg&quot;/&gt; &lt;StackPanel Grid.Row=&quot;1&quot;&gt;&#10;                &lt;Label Content=&quot;Размер файла в пикселях: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;sizeOfImage&quot;&gt;&lt;/Label&gt; &#10;                &lt;Label Content=&quot;Разрешение файла: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;resolutionOfImage&quot;&gt;&lt;/Label&gt;&#10;                &lt;Label Content=&quot;Код текущего пикселя: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;currentPixel&quot;&gt;&lt;/Label&gt;&#10;                &lt;Button x:Name=&quot;addPictures&quot; Content=&quot;Добавить изображения&quot; Foreground=&quot;Azure&quot; Background=&quot;DimGray&quot; Width=&quot;150px&quot; HorizontalAlignment=&quot;Left&quot;&gt;&lt;/Button&gt;&#10;            &lt;/StackPanel&gt;.../&gt;" />
+            <marker date="1540307746851" expanded="true" signature="1181:1326" ph="&lt;&lt;RowDefinition Height=&quot;3*&quot;/&gt; &lt;RowDefinition Height=&quot;*&quot;/&gt;.../&gt;" />
+            <marker date="1540307746851" expanded="true" signature="1427:2033" ph="&lt;&lt;Label Content=&quot;Размер файла в пикселях: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;sizeOfImage&quot;&gt;&lt;/Label&gt; &lt;Label Content=&quot;Разрешение файла: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;resolutionOfImage&quot;&gt;&lt;/Label&gt; &lt;Label Content=&quot;Код текущего пикселя: &quot; Foreground=&quot;Azure&quot; FontFamily=&quot;OpenSans&quot; x:Name=&quot;currentPixel&quot;&gt;&lt;/Label&gt; &lt;Button x:Name=&quot;addPictures&quot; Content=&quot;Добавить изображения&quot; Foreground=&quot;Azure&quot; Background=&quot;DimGray&quot; Width=&quot;150px&quot; HorizontalAlignment=&quot;Left&quot;&gt;&lt;/Button&gt;.../&gt;" />
           </folding>
         </state>
       </provider>
