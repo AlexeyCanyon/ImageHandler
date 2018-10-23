@@ -1,0 +1,14 @@
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\Debug\ImageHandler.exe.config
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\Debug\ImageHandler.exe
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\Debug\ImageHandler.pdb
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler.csprojResolveAssemblyReference.cache
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\MainWindow.g.cs
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\App.g.cs
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler_MarkupCompile.cache
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler_MarkupCompile.lref
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\MainWindow.baml
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler.g.resources
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler.Properties.Resources.resources
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler.csproj.GenerateResource.Cache
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler.exe
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler.pdb
