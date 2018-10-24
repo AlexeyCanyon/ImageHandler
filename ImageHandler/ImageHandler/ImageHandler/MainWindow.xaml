@@ -15,7 +15,7 @@
             <StackPanel Image.MouseDown="ImageClicked">
                 <Image Source="D:/1.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image1"/>
                 <Image Source="D:/2.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image2"/>
-                <Image Source="D:/3.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image3"/>
+                <Image Source="D:/3.gif" HorizontalAlignment="Center" Width="350px" x:Name="Image3"/>
             </StackPanel>
         </ScrollViewer>
         
