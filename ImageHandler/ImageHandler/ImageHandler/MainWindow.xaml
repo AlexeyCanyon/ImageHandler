@@ -24,7 +24,7 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" x:Name="MainImage" Source="D:/3.jpg"/>
+            <Image Grid.Row="0" x:Name="MainImage" Source="D:/3.jpg" MouseDown="updatePixel"/>
                 
             <StackPanel Grid.Row="1">
                 <Label Content="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage"></Label> 

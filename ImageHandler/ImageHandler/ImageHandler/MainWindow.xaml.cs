@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Mime;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using System.Drawing;
 using System.Windows.Media.Imaging;
@@ -75,6 +76,13 @@ namespace ImageHandler
                     image.HorizontalAlignment = HorizontalAlignment.Center;
                     imagesPanel.Children.Add(image);
                 }
+        }
+
+        private void updatePixel(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Point p = e.GetPosition(MainImage);
+            Bitmap bmp = new Bitmap(MainImage.Source.ToString().Substring(8));
+            currentPixel.Content = "Код текущего пикселя: " + ColorTranslator.ToHtml(bmp.GetPixel((int) Math.Round (p.X), (int) Math.Round (p.Y)));
         }
         
         
