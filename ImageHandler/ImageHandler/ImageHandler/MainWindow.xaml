@@ -12,10 +12,10 @@
             <ColumnDefinition Width="2.5*" />
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
-            <StackPanel Image.MouseDown="ImageClicked">
+            <StackPanel Image.MouseDown="ImageClicked" x:Name="imagesPanel">
                 <Image Source="D:/1.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image1"/>
                 <Image Source="D:/2.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image2"/>
-                <Image Source="D:/3.gif" HorizontalAlignment="Center" Width="350px" x:Name="Image3"/>
+                <Image Source="D:/3.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image3"/>  
             </StackPanel>
         </ScrollViewer>
         
@@ -30,6 +30,7 @@
                 <Label Content="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage"></Label> 
                 <Label Content="Разрешение файла: " Foreground="Azure" FontFamily="OpenSans" x:Name="resolutionOfImage"></Label>
                 <Label Content="Код текущего пикселя: " Foreground="Azure" FontFamily="OpenSans" x:Name="currentPixel"></Label>
+                <Label Content="Различных цветов в картинке: " Foreground="Azure" FontFamily="OpenSans" x:Name="colorsCount"></Label>
                 <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
             </StackPanel>
         </Grid>
