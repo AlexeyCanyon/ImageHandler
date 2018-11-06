@@ -12,10 +12,7 @@
             <ColumnDefinition Width="2.5*" />
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
-            <StackPanel Image.MouseDown="ImageClicked" x:Name="imagesPanel">
-                <Image Source="D:/1.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image1"/>
-                <Image Source="D:/2.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image2"/>
-                <Image Source="D:/3.jpg" HorizontalAlignment="Center" Width="350px" x:Name="Image3"/>  
+            <StackPanel Image.MouseDown="ImageClicked" x:Name="imagesPanel">  
             </StackPanel>
         </ScrollViewer>
         

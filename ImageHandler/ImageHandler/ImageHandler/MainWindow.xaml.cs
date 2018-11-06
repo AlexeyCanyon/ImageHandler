@@ -12,6 +12,12 @@ using HorizontalAlignment = System.Windows.HorizontalAlignment;
 using Image = System.Drawing.Image;
 using ImageWPF = System.Windows.Controls.Image;
 using MessageBox = System.Windows.MessageBox;
+using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
+using Emgu.CV.Cvb;
+using Emgu.CV.UI;
+using Emgu.CV.Cuda;
 
 
 namespace ImageHandler
@@ -50,9 +56,37 @@ namespace ImageHandler
              //x-в пикселях , y - в пикселях
 //            colorsCount.Content = "Различных цветов в картинке: " + listColors.Count;
             
+//            sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
+//            resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
             
-            sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
-            resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
+            IImage image;
+//            image = new UMat(MainImage.Source.ToString().Substring(8), ImreadModes.Color); //UMat version
+            image = new Mat(MainImage.Source.ToString().Substring(8), ImreadModes.Color); //CPU version
+
+            long detectionTime;
+            List<Rectangle> faces = new List<Rectangle>();
+            List<Rectangle> eyes = new List<Rectangle>();
+
+            DetectFace.Detect(
+                image, "haarcascade_frontalface_default.xml", "haarcascade_eye.xml", 
+                faces, eyes,
+                out detectionTime);
+
+            foreach (Rectangle face in faces)
+                CvInvoke.Rectangle(image, face, new Bgr(Color.Red).MCvScalar, 2);
+            foreach (Rectangle eye in eyes)
+                CvInvoke.Rectangle(image, eye, new Bgr(Color.Blue).MCvScalar, 2);
+
+            //display the image 
+            using (InputArray iaImage = image.GetInputArray())
+                ImageViewer.Show(image, String.Format(
+                    "Completed face and eye detection using {0} in {1} milliseconds", 
+                    (iaImage.Kind == InputArray.Type.CudaGpuMat && CudaInvoke.HasCuda) ? "CUDA" :
+                    (iaImage.IsUMat && CvInvoke.UseOpenCL) ? "OpenCL" 
+                    : "CPU",
+                    detectionTime));
+
+            
         }
         
         private void AddPictures(object sender, RoutedEventArgs e)
@@ -84,7 +118,6 @@ namespace ImageHandler
             Bitmap bmp = new Bitmap(MainImage.Source.ToString().Substring(8));
             currentPixel.Content = "Код текущего пикселя: " + ColorTranslator.ToHtml(bmp.GetPixel((int) Math.Round (p.X), (int) Math.Round (p.Y)));
         }
-        
         
     }
 }

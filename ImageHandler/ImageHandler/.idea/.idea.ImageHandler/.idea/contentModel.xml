@@ -9,18 +9,36 @@
         <e p="App.xaml" t="Include" />
         <e p="App.xaml.cs" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="DetectFace.cs" t="Include" />
+        <e p="haarcascade_eye.xml" t="Include" />
+        <e p="haarcascade_frontalface_default.xml" t="Include" />
         <e p="ImageHandler.csproj" t="IncludeRecursive" />
+        <e p="License-LGPL.txt" t="Include" />
         <e p="MainWindow.xaml" t="Include" />
         <e p="MainWindow.xaml.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
           <e p="Resources.Designer.cs" t="Include" />
           <e p="Resources.resx" t="Include" />
         </e>
+        <e p="x64" t="Include" />
+        <e p="x86" t="Include" />
       </e>
       <e p="ImageHandler.sln" t="IncludeFlat" />
-      <e p="packages" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive">
+        <e p="EMGU.CV.3.4.3.3016\build\x64\concrt140.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x64\cvextern.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x64\msvcp140.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x64\opencv_ffmpeg343_64.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x64\vcruntime140.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x86\concrt140.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x86\cvextern.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x86\msvcp140.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x86\opencv_ffmpeg343.dll" t="Include" />
+        <e p="EMGU.CV.3.4.3.3016\build\x86\vcruntime140.dll" t="Include" />
+      </e>
     </e>
   </component>
 </project>
