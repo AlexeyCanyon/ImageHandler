@@ -29,6 +29,8 @@
                 <Label Content="Код текущего пикселя: " Foreground="Azure" FontFamily="OpenSans" x:Name="currentPixel"></Label>
                 <Label Content="Различных цветов в картинке: " Foreground="Azure" FontFamily="OpenSans" x:Name="colorsCount"></Label>
                 <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                <Button x:Name="openMap" Content="Открыть карту" Click="OpenMap" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+
             </StackPanel>
         </Grid>
        

@@ -42,3 +42,5 @@ C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\I
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\Debug\zh-cn\ZedGraph.resources.dll
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\Debug\zh-tw\ZedGraph.resources.dll
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\ImageHandler_Content.g.cs
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\MapWindow.g.cs
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\Debug\MapWindow.baml

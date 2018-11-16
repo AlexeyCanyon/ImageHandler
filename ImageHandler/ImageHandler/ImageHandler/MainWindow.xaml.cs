@@ -56,8 +56,8 @@ namespace ImageHandler
              //x-в пикселях , y - в пикселях
 //            colorsCount.Content = "Различных цветов в картинке: " + listColors.Count;
             
-//            sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
-//            resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
+            sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
+            resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
             
             IImage image;
 //            image = new UMat(MainImage.Source.ToString().Substring(8), ImreadModes.Color); //UMat version
@@ -117,6 +117,12 @@ namespace ImageHandler
             System.Windows.Point p = e.GetPosition(MainImage);
             Bitmap bmp = new Bitmap(MainImage.Source.ToString().Substring(8));
             currentPixel.Content = "Код текущего пикселя: " + ColorTranslator.ToHtml(bmp.GetPixel((int) Math.Round (p.X), (int) Math.Round (p.Y)));
+        }
+
+        private void OpenMap(object sender, RoutedEventArgs e)
+        {
+            MapWindow map = new MapWindow();
+            map.Show();
         }
         
     }

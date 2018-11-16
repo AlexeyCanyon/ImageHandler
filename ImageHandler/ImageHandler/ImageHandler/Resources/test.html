@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src="jquery-3.3.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=<e495d6a7-4c47-4ecf-9732-e65845be13e4>&lang=ru_RU" type="text/javascript">
+    </script>
+    <script src="map.js"></script>
+
+</head>
+<body>
+<label id="ress"></label>
+<container>
+    <form class="row">
+        <div class="col-md-3 col-md-push-3" style="top: 20px">
+            Адрес дома<br>
+            <input type="text" id="addressBox"><br>
+            <br>
+            Что искать?<br>
+            <input type="text" id="itemBox"><br>
+            <br>
+            <button type="button" onclick="findHome()" class="btn btn-primary" id="butt" style="background-color: #2da001">Чек</button>
+            <br>
+            Координаты объекта: <div id="location">55.994416, 92.797207</div>
+            <div id="map" style="width:900px; height:600px; top: 200px;"></div><br><br>
+
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <tbody class="tbodyy">
+                    <tr>
+                        <th>Название</th>
+                        <th>Адрес</th>
+                        <th>Тип</th>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-3 col-md-push-2" style="top: 20px">
+            Полученный json<br>
+            <input type="text" id="eBox"><br>
+        </div>
+
+    </form >
+</container>
+</body>
+</html>

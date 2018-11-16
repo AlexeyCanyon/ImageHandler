@@ -11,5 +11,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("haarcascade_eye.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("haarcascade_frontalface_default.xml")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("license-lgpl.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/map.js")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/test.html")]
 
 
