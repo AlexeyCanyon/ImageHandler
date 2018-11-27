@@ -2,21 +2,25 @@ namespace ImageHandler
 {
     public class Picture
     {
-        public string name;
-        public int yearOfCreation;
-        public float longitude;
-        public float latitude;
-        
-        public float  longitudeCreation;
-        public float  latitudeCreation;
-        
-        public float longitudeStorage;
-        public float latitudeStorage;
-        
-        public int height;
-        public int width;
-        public string rules;
-        public string description;
-        
+        public string Name { get; set; }
+        public string Author { get; set; }
+        public int YearOfCreation { get; set; }
+        public string Rules { get; set; }
+        public string Description { get; set; }
+        public string Material { get; set; }
+        public string Technology { get; set; }
+
+        public float PercentOfRed { get; set; }
+        public float PercentOfGreen { get; set; }
+        public float PercentOfBlue { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
+
+        public float Longitude { get; set; }
+        public float Latitude { get; set; }
+        public float LongitudeCreation { get; set; }
+        public float LatitudeCreation { get; set; }
+        public float LongitudeStorage { get; set; }
+        public float LatitudeStorage { get; set; }
     }
 }

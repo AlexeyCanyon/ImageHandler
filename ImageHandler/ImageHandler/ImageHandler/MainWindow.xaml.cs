@@ -12,6 +12,7 @@ using HorizontalAlignment = System.Windows.HorizontalAlignment;
 using Image = System.Drawing.Image;
 using ImageWPF = System.Windows.Controls.Image;
 using MessageBox = System.Windows.MessageBox;
+using Newtonsoft.Json;
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
@@ -121,6 +122,70 @@ namespace ImageHandler
 
         private void OpenMap(object sender, RoutedEventArgs e)
         {
+            Picture[] mas = new Picture[3];
+            mas[0] = new Picture()
+            {
+                Name = "Вася",
+                Author = "Пушкин",
+                YearOfCreation = 1900,
+                Longitude = 20.3f,
+                Latitude = 50.5f,
+                LongitudeCreation = 100f,
+                LatitudeCreation = 10f,
+                LongitudeStorage = 20.3f,
+                LatitudeStorage = 50.5f,
+                Height = 50,
+                Width = 200,
+                PercentOfRed = 30f,
+                PercentOfGreen = 70f,
+                PercentOfBlue = 0f,
+                Rules = "Лол кек"
+            };
+
+            mas[1] = new Picture()
+            {
+                Name = "Коля",
+                Author = "Hideo Kojima",
+                YearOfCreation = 900,
+                Longitude = 28.3f,
+                Latitude = 52.5f,
+                LongitudeCreation = 10f,
+                LatitudeCreation = 17f,
+                LongitudeStorage = 28.3f,
+                LatitudeStorage = 52.5f,
+                Height = 70,
+                Width = 290,
+                PercentOfRed = 50f,
+                PercentOfGreen = 20f,
+                PercentOfBlue = 30f,
+                Rules = "Лол кек чабурек"
+            };
+
+            mas[2] = new Picture()
+            {
+                Name = "Корней",
+                Author = "Эх",
+                YearOfCreation = 100,
+                Longitude = 50.3f,
+                Latitude = 58.5f,
+                LongitudeCreation = 85f,
+                LatitudeCreation = 32f,
+                LongitudeStorage = 50.3f,
+                LatitudeStorage = 58.5f,
+                Height = 8000,
+                Width = 120,
+                PercentOfRed = 10f,
+                PercentOfGreen = 20f,
+                PercentOfBlue = 70f,
+                Rules = "Лол кек"
+            };
+
+            string serialized = JsonConvert.SerializeObject(mas);
+            using (FileStream fstream = new FileStream(@"note.js", FileMode.Create))
+            {
+                byte[] array = System.Text.Encoding.UTF8.GetBytes("var picturesFile = '" + serialized + "';");
+                fstream.Write(array, 0, array.Length);
+            }
             MapWindow map = new MapWindow();
             map.Show();
         }
