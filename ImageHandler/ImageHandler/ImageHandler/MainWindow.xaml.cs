@@ -19,7 +19,9 @@ using Emgu.CV.Structure;
 using Emgu.CV.Cvb;
 using Emgu.CV.UI;
 using Emgu.CV.Cuda;
-
+using System.Collections.Concurrent;
+using System.Drawing.Imaging;
+using System.Threading.Tasks;
 
 namespace ImageHandler
 {
@@ -35,34 +37,23 @@ namespace ImageHandler
 
         private void ImageClicked(object sender, RoutedEventArgs e)
         {
+            ConcurrentBag<ulong> redCol = new ConcurrentBag<ulong>();
+            ConcurrentBag<ulong> greenCol = new ConcurrentBag<ulong>();
+            ConcurrentBag<ulong> blueCol = new ConcurrentBag<ulong>();
+
+            
             ImageWPF selectedImage = (ImageWPF) e.Source;
             MainImage.Source = selectedImage.Source;
-            Image sourceBitmap = Image.FromFile(MainImage.Source.ToString().Substring(8));
-//            Bitmap bmp = new Bitmap(MainImage.Source.ToString().Substring(8));
-//            List<string> listColors = new List<string>();
-//            string pixelColor;
-//            for (int i = 0; i < sourceBitmap.Width-1; i++)
-//            {
-//                for (int j = 0; j < sourceBitmap.Height-1; j++)
-//                {
-//                    pixelColor = ColorTranslator.ToHtml(bmp.GetPixel(i,j));
-//                    if (listColors.IndexOf(pixelColor) == -1)
-//                    {
-//                        listColors.Add(pixelColor);
-//                    }
-//                    
-//                }
-//            }
-            
-             //x-в пикселях , y - в пикселях
-//            colorsCount.Content = "Различных цветов в картинке: " + listColors.Count;
-            
-            sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
-            resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
-            
+            string selectImagePath = MainImage.Source.ToString().Substring(8);
+            Image sourceBitmap = Image.FromFile(selectImagePath);
+
+            int lenght = selectImagePath.Length;
+            ResizeImage(selectImagePath, selectImagePath.Insert(lenght - 4, "-Mini"), 64, 64, false);
+
+
             IImage image;
-//            image = new UMat(MainImage.Source.ToString().Substring(8), ImreadModes.Color); //UMat version
-            image = new Mat(MainImage.Source.ToString().Substring(8), ImreadModes.Color); //CPU version
+            //            image = new UMat(selectImagePath, ImreadModes.Color); //UMat version
+            image = new Mat(selectImagePath, ImreadModes.Color); //CPU version
 
             long detectionTime;
             List<Rectangle> faces = new List<Rectangle>();
@@ -87,7 +78,62 @@ namespace ImageHandler
                     : "CPU",
                     detectionTime));
 
-            
+            Bitmap bmp = new Bitmap(selectImagePath);
+            unsafe
+            {
+                BitmapData bitmapData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadWrite, bmp.PixelFormat);
+                int bytesPerPixel = Bitmap.GetPixelFormatSize(bmp.PixelFormat) / 8;
+                int heightInPixels = bmp.Height;
+                int widthInBytes = bmp.Width * bytesPerPixel;
+                byte* ptrFirstPixel = (byte*)bitmapData.Scan0;
+                Parallel.For(0, heightInPixels, y =>
+                {
+                    byte* currentLine = ptrFirstPixel + (y * bitmapData.Stride);
+                    for (int x = 0; x < widthInBytes; x = x + bytesPerPixel)
+                    {
+                        ulong oldBlue = currentLine[x];
+                        ulong oldGreen = currentLine[x + 1];
+                        ulong oldRed = currentLine[x + 2];
+
+                        redCol.Add(oldRed);
+                        greenCol.Add(oldGreen);
+                        blueCol.Add(oldBlue);
+                    }
+                });
+                bmp.UnlockBits(bitmapData);
+            }
+
+            ulong[] rA = new ulong[redCol.Count];
+            ulong[] gA = new ulong[greenCol.Count];
+            ulong[] bA = new ulong[blueCol.Count];
+
+            float r = 0;
+            float g = 0;
+            float b = 0;
+
+            redCol.CopyTo(rA, 0);
+            greenCol.CopyTo(gA, 0);
+            blueCol.CopyTo(bA, 0);
+            for (int i = 0; i < rA.Length; i++)
+            {
+                r += rA[i];
+                g += gA[i];
+                b += bA[i];
+            }
+
+            double procentRed = r / (sourceBitmap.Height * sourceBitmap.Width);
+            procentRed = Math.Round(procentRed / 256 * 100, 1);
+            double procentGreen = g / (sourceBitmap.Height * sourceBitmap.Width);
+            procentGreen = Math.Round(procentGreen / 256 * 100, 1);
+            double procentBlue = b / (sourceBitmap.Height * sourceBitmap.Width);
+            procentBlue = Math.Round(procentBlue / 256 * 100, 1);
+
+            PercentOfRedImage.Content = "Насыщенность красного: " + procentRed + "%";
+            PercentOfGreenImage.Content = "Насыщенность зеленого: " + procentGreen + "%";
+            PercentOfBlueImage.Content = "Насыщенность синего: " + procentBlue + "%";
+            sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
+            resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
+
         }
         
         private void AddPictures(object sender, RoutedEventArgs e)
@@ -189,6 +235,33 @@ namespace ImageHandler
             MapWindow map = new MapWindow();
             map.Show();
         }
-        
+
+        private void ResizeImage(string OrigFile, string NewFile, int NewWidth, int MaxHeight, bool ResizeIfWider)
+        {
+            System.Drawing.Image FullSizeImage = System.Drawing.Image.FromFile(OrigFile);
+            // Ensure the generated thumbnail is not being used by rotating it 360 degrees
+            FullSizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
+            FullSizeImage.RotateFlip(System.Drawing.RotateFlipType.Rotate180FlipNone);
+
+            if (ResizeIfWider)
+            {
+                if (FullSizeImage.Width <= NewWidth)
+                {
+                    NewWidth = FullSizeImage.Width;
+                }
+            }
+
+            int NewHeight = FullSizeImage.Height * NewWidth / FullSizeImage.Width;
+            if (NewHeight > MaxHeight) // Height resize if necessary
+            {
+                NewWidth = FullSizeImage.Width * MaxHeight / FullSizeImage.Height;
+                NewHeight = MaxHeight;
+            }
+
+            // Create the new image with the sizes we've calculated
+            System.Drawing.Image NewImage = FullSizeImage.GetThumbnailImage(NewWidth, NewHeight, null, IntPtr.Zero);
+            FullSizeImage.Dispose();
+            NewImage.Save(NewFile);
+        }
     }
 }
