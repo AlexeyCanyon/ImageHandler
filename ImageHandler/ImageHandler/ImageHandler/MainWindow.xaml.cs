@@ -32,6 +32,7 @@ namespace ImageHandler
     {
         public MainWindow()
         {
+            MessageBox.Show(Database.TryConnect());
             InitializeComponent();
         }
 

@@ -373,3 +373,7 @@ C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHand
 C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ImageHandler.csproj.GenerateResource.Cache
 C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ImageHandler.exe
 C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ImageHandler.pdb
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\Google.Protobuf.dll
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\MySql.Data.dll
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\Google.Protobuf.xml
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\MySql.Data.xml
