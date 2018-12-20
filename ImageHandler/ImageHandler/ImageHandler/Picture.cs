@@ -12,6 +12,9 @@ namespace ImageHandler
         public string Description { get; set; }
         public string Material { get; set; }
         public string Technology { get; set; }
+        public string PlaceOfCreation { get; set; }
+        public string PlaceOfStorage { get; set; }
+        public string Size { get; set; }
 
         public float PercentOfRed { get; set; }
         public float PercentOfGreen { get; set; }

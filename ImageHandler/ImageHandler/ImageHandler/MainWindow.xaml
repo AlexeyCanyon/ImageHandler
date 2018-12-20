@@ -32,21 +32,21 @@
                 <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
                 <Button x:Name="openMap" Content="Открыть карту" Click="OpenMap" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
             </StackPanel>
-            <StackPanel Grid.Row="1" Width="200px" Margin="210,0,513,0">
-                <Label Content="Название картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="nameOfImage"></Label>
-                <Label Content="Автор картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="authorOfImage"></Label>
-                <Label Content="Год создания картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="YearOfCreationImage"></Label>
-                <Label Content="Материал: " Foreground="Azure" FontFamily="OpenSans" x:Name="MaterialImage"></Label>
-                <Label Content="Описание: " Foreground="Azure" FontFamily="OpenSans" x:Name="DescriptionImage"></Label>
-                <Label Content="Правила использования: " Foreground="Azure" FontFamily="OpenSans" x:Name="RulesOfImage"></Label>
+            <StackPanel Grid.Row="1" Width="280px" Margin="250,0,513,0">
+                <Label Content="Название картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="NameLabel"></Label>
+                <Label Content="Автор картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="AuthorLabel"></Label>
+                <Label Content="Дата создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="YearOfCreationLabel"></Label>
+                <Label Content="Материал: " Foreground="Azure" FontFamily="OpenSans" x:Name="MaterialLabel"></Label>
+                <Label Content="Описание: " Foreground="Azure" FontFamily="OpenSans" x:Name="DescriptionLabel"></Label>
+                <Label Content="Правила использования: " Foreground="Azure" FontFamily="OpenSans" x:Name="RulesLabel"></Label>
             </StackPanel>
-            <StackPanel Grid.Row="1" Width="200px" Margin="415,0,308,0">
-                <Label Content="Технология: " Foreground="Azure" FontFamily="OpenSans" x:Name="TechnologyOfImage"></Label>
-                <Label Content="Насыщенность красного: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfRedImage"></Label>
-                <Label Content="Насыщенность зеленого: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfGreenImage"></Label>
-                <Label Content="Насыщенность синего: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfBlueImage"></Label>
-                <Label Content="Место хранения: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfStorageImage"></Label>
-                <Label Content="Место создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfCreationImage"></Label>
+            <StackPanel Grid.Row="1" Width="250px" Margin="550,0,308,0" RenderTransformOrigin="0.778,0.497">
+                <Label Content="Технология: " Foreground="Azure" FontFamily="OpenSans" x:Name="TechnologLabel"></Label>
+                <Label Content="Насыщенность красного: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfRedLabel"></Label>
+                <Label Content="Насыщенность зеленого: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfGreenLabel"></Label>
+                <Label Content="Насыщенность синего: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfBlueLabel"></Label>
+                <Label Content="Место хранения: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfStorageLabel"></Label>
+                <Label Content="Место создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfCreationLabel"></Label>
             </StackPanel>
         </Grid>
        

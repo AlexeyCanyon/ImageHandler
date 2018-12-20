@@ -54,15 +54,11 @@ namespace ImageHandler
             bi3.UriSource = new Uri(mainPicture.File);
             bi3.EndInit();
             MainImage.Source = bi3;
+            UpdateMetaData();
         }
 
         private void ImageClicked(object sender, RoutedEventArgs e)
         {
-            ConcurrentBag<ulong> redCol = new ConcurrentBag<ulong>();
-            ConcurrentBag<ulong> greenCol = new ConcurrentBag<ulong>();
-            ConcurrentBag<ulong> blueCol = new ConcurrentBag<ulong>();
-
-            
             ImageWPF selectedImage = (ImageWPF) e.Source;
             MainImage.Source = selectedImage.Source;
             string selectImagePath = MainImage.Source.ToString().Substring(8);
@@ -71,33 +67,9 @@ namespace ImageHandler
             int lenght = selectImagePath.Length;
             ResizeImage(selectImagePath, selectImagePath.Insert(lenght - 4, "-Mini"), 64, 64, false);
 
-
-            IImage image;
-            //            image = new UMat(selectImagePath, ImreadModes.Color); //UMat version
-            image = new Mat(selectImagePath, ImreadModes.Color); //CPU version
-
-            long detectionTime;
-            List<Rectangle> faces = new List<Rectangle>();
-            List<Rectangle> eyes = new List<Rectangle>();
-
-            DetectFace.Detect(
-                image, "haarcascade_frontalface_default.xml", "haarcascade_eye.xml", 
-                faces, eyes,
-                out detectionTime);
-
-            foreach (Rectangle face in faces)
-                CvInvoke.Rectangle(image, face, new Bgr(Color.Red).MCvScalar, 2);
-            foreach (Rectangle eye in eyes)
-                CvInvoke.Rectangle(image, eye, new Bgr(Color.Blue).MCvScalar, 2);
-
-            //display the image 
-            using (InputArray iaImage = image.GetInputArray())
-                ImageViewer.Show(image, String.Format(
-                    "Completed face and eye detection using {0} in {1} milliseconds", 
-                    (iaImage.Kind == InputArray.Type.CudaGpuMat && CudaInvoke.HasCuda) ? "CUDA" :
-                    (iaImage.IsUMat && CvInvoke.UseOpenCL) ? "OpenCL" 
-                    : "CPU",
-                    detectionTime));
+            ConcurrentBag<ulong> redCol = new ConcurrentBag<ulong>();
+            ConcurrentBag<ulong> greenCol = new ConcurrentBag<ulong>();
+            ConcurrentBag<ulong> blueCol = new ConcurrentBag<ulong>();
 
             Bitmap bmp = new Bitmap(selectImagePath);
             unsafe
@@ -149,9 +121,9 @@ namespace ImageHandler
             double procentBlue = b / (sourceBitmap.Height * sourceBitmap.Width);
             procentBlue = Math.Round(procentBlue / 256 * 100, 1);
 
-            PercentOfRedImage.Content = "Насыщенность красного: " + procentRed + "%";
-            PercentOfGreenImage.Content = "Насыщенность зеленого: " + procentGreen + "%";
-            PercentOfBlueImage.Content = "Насыщенность синего: " + procentBlue + "%";
+            PercentOfRedLabel.Content = "Насыщенность красного: " + procentRed + "%";
+            PercentOfGreenLabel.Content = "Насыщенность зеленого: " + procentGreen + "%";
+            PercentOfBlueLabel.Content = "Насыщенность синего: " + procentBlue + "%";
             sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
             resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
 
@@ -284,5 +256,52 @@ namespace ImageHandler
             FullSizeImage.Dispose();
             NewImage.Save(NewFile);
         }
+
+        private void FindFace(string selectImagePath)
+        {
+            IImage image;
+            //            image = new UMat(selectImagePath, ImreadModes.Color); //UMat version
+            image = new Mat(selectImagePath, ImreadModes.Color); //CPU version
+
+            long detectionTime;
+            List<Rectangle> faces = new List<Rectangle>();
+            List<Rectangle> eyes = new List<Rectangle>();
+
+            DetectFace.Detect(
+                image, "haarcascade_frontalface_default.xml", "haarcascade_eye.xml",
+                faces, eyes,
+                out detectionTime);
+
+            foreach (Rectangle face in faces)
+                CvInvoke.Rectangle(image, face, new Bgr(Color.Red).MCvScalar, 2);
+            foreach (Rectangle eye in eyes)
+                CvInvoke.Rectangle(image, eye, new Bgr(Color.Blue).MCvScalar, 2);
+
+            //display the image 
+            using (InputArray iaImage = image.GetInputArray())
+                ImageViewer.Show(image, String.Format(
+                    "Completed face and eye detection using {0} in {1} milliseconds",
+                    (iaImage.Kind == InputArray.Type.CudaGpuMat && CudaInvoke.HasCuda) ? "CUDA" :
+                    (iaImage.IsUMat && CvInvoke.UseOpenCL) ? "OpenCL"
+                    : "CPU",
+                    detectionTime));
+        }
+
+        private void UpdateMetaData()
+        {
+            NameLabel.Content = "Название картины: " + mainPicture.Name;
+            AuthorLabel.Content = "Автор картины: " + mainPicture.Author;
+            YearOfCreationLabel.Content = "Дата создания: " + mainPicture.YearOfCreation;
+            MaterialLabel.Content = "Материал: " + mainPicture.Material;
+            DescriptionLabel.Content = "Описание: " + mainPicture.Description;
+            RulesLabel.Content = "Правила использования: " + mainPicture.Rules;
+            TechnologLabel.Content = "Технология: " + mainPicture.Technology;
+            PercentOfRedLabel.Content = "Насыщенность красного: " + mainPicture.PercentOfRed + "%";
+            PercentOfGreenLabel.Content = "Насыщенность зеленого: " + mainPicture.PercentOfGreen + "%";
+            PercentOfBlueLabel.Content = "Насыщенность синего: " + mainPicture.PercentOfBlue + "%";
+            PlaceOfStorageLabel.Content = "Место хранения: " + mainPicture.PlaceOfStorage;
+            PlaceOfCreationLabel.Content = "Место создания: " + mainPicture.PlaceOfCreation;
+        }
+
     }
 }

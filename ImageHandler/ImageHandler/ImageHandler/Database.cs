@@ -50,7 +50,11 @@ namespace ImageHandler
                     pictures[pictures.Length - 1].Name = reader[1].ToString();
                     pictures[pictures.Length - 1].Author = reader[2].ToString();
                     pictures[pictures.Length - 1].YearOfCreation = reader[3].ToString();
+                    pictures[pictures.Length - 1].PlaceOfCreation = reader[6].ToString();
+                    pictures[pictures.Length - 1].PlaceOfStorage = reader[7].ToString();
                     pictures[pictures.Length - 1].Material = reader[8].ToString();
+                    pictures[pictures.Length - 1].Size = reader[9].ToString();
+                    pictures[pictures.Length - 1].Rules = reader[11].ToString();
                     pictures[pictures.Length - 1].File = "http://gf.sfu-kras.ru/" + reader[12].ToString();
                 }
                 reader.Close();
