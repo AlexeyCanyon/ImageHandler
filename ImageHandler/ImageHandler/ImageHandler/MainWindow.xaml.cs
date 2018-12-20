@@ -29,23 +29,31 @@ namespace ImageHandler
     public partial class MainWindow
     {
         Picture[] pictures;
+        Picture mainPicture;
 
         public MainWindow()
         {
             pictures = Database.GetPictures();
+            InitializeComponent();
+
             foreach (Picture picture in pictures)
             {
                 ImageWPF image = new ImageWPF();
-                BitmapImage bi3 = new BitmapImage();
-                bi3.BeginInit();
-                bi3.UriSource = new Uri(picture.File);
-                bi3.EndInit();
-                image.Source = bi3;
+                BitmapImage bi31 = new BitmapImage();
+                bi31.BeginInit();
+                bi31.UriSource = new Uri(picture.File);
+                bi31.EndInit();
+                image.Source = bi31;
                 image.Width = 350;
                 image.HorizontalAlignment = HorizontalAlignment.Center;
                 imagesPanel.Children.Add(image);
             }
-            InitializeComponent();
+            mainPicture = pictures[0];
+            BitmapImage bi3 = new BitmapImage();
+            bi3.BeginInit();
+            bi3.UriSource = new Uri(mainPicture.File);
+            bi3.EndInit();
+            MainImage.Source = bi3;
         }
 
         private void ImageClicked(object sender, RoutedEventArgs e)
