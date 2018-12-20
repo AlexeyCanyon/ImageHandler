@@ -25,14 +25,26 @@ using System.Threading.Tasks;
 
 namespace ImageHandler
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow
     {
+        Picture[] pictures;
+
         public MainWindow()
         {
-            MessageBox.Show(Database.TryConnect());
+            pictures = Database.GetPictures();
+            foreach (Picture picture in pictures)
+            {
+                ImageWPF image = new ImageWPF();
+                BitmapImage bi3 = new BitmapImage();
+                bi3.BeginInit();
+                bi3.UriSource = new Uri(picture.File);
+                bi3.EndInit();
+                image.Source = bi3;
+                image.Width = 350;
+                image.HorizontalAlignment = HorizontalAlignment.Center;
+                imagesPanel.Children.Add(image);
+            }
             InitializeComponent();
         }
 
@@ -174,7 +186,7 @@ namespace ImageHandler
             {
                 Name = "Вася",
                 Author = "Пушкин",
-                YearOfCreation = 1900,
+                YearOfCreation = "1900",
                 Longitude = 20.3f,
                 Latitude = 50.5f,
                 LongitudeCreation = 100f,
@@ -193,7 +205,7 @@ namespace ImageHandler
             {
                 Name = "Коля",
                 Author = "Hideo Kojima",
-                YearOfCreation = 900,
+                YearOfCreation = "900",
                 Longitude = 28.3f,
                 Latitude = 52.5f,
                 LongitudeCreation = 10f,
@@ -212,7 +224,7 @@ namespace ImageHandler
             {
                 Name = "Корней",
                 Author = "Эх",
-                YearOfCreation = 100,
+                YearOfCreation = "100",
                 Longitude = 50.3f,
                 Latitude = 58.5f,
                 LongitudeCreation = 85f,

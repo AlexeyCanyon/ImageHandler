@@ -2,9 +2,12 @@ namespace ImageHandler
 {
     public class Picture
     {
+        public string ID { get; set; }
+        public string File { get; set; }
+
         public string Name { get; set; }
         public string Author { get; set; }
-        public int YearOfCreation { get; set; }
+        public string YearOfCreation { get; set; }
         public string Rules { get; set; }
         public string Description { get; set; }
         public string Material { get; set; }

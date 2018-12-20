@@ -3,38 +3,60 @@ using System.Text;
 using System.Collections.Generic;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using MessageBox = System.Windows.MessageBox;
 
 
 namespace ImageHandler
 {
-    class Database
+    static class Database
     {
-        public static MySqlConnection GetDBConnection(string host, int port, string database, string username, string password)
-        {
-            String connString = "Server=" + host + ";Database=" + database
-                + ";port=" + port + ";User Id=" + username + ";password=" + password;
+        static MySqlConnection conn;
 
-            MySqlConnection conn = new MySqlConnection(connString);
-            return conn;
-        }
-
-        public static string TryConnect()
+        private static bool TryConnect()
         {
             string host = "gf.sfu-kras.ru";
             int port = 3306;
             string database = "gallery";
             string username = "root";
             string password = "root";
-            MySqlConnection conn = GetDBConnection(host, port, database, username, password);
+            String connString = "Server=" + host + ";Database=" + database
+               + ";port=" + port + ";User Id=" + username + ";password=" + password;
+            conn = new MySqlConnection(connString);
             try
             {
                 conn.Open();
-                return "Connection successful!";
+                return true;
             }
             catch (Exception e)
             {
-                return "Error: " + e.Message;
+                MessageBox.Show("Ошибка подключения к базе данных: " + e.Message);
+                return false;
             }
+        }
+
+        public static Picture[] GetPictures()
+        {
+            Picture[] pictures = new Picture[0];
+            if (TryConnect())
+            {
+                string sql = "SELECT * FROM main WHERE razdel = 'Живопись'";
+                MySqlCommand command = new MySqlCommand(sql, conn);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Array.Resize(ref pictures, pictures.Length + 1);
+                    pictures[pictures.Length - 1] = new Picture();
+                    pictures[pictures.Length - 1].ID = reader[0].ToString();
+                    pictures[pictures.Length - 1].Name = reader[1].ToString();
+                    pictures[pictures.Length - 1].Author = reader[2].ToString();
+                    pictures[pictures.Length - 1].YearOfCreation = reader[3].ToString();
+                    pictures[pictures.Length - 1].Material = reader[8].ToString();
+                    pictures[pictures.Length - 1].File = "http://gf.sfu-kras.ru/" + reader[12].ToString();
+                }
+                reader.Close();
+                conn.Close();
+            }
+            return pictures;
         }
     }
 }
