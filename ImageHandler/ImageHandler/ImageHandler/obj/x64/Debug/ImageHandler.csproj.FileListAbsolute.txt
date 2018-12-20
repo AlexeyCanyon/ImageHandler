@@ -377,3 +377,5 @@ C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\I
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\MySql.Data.dll
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\Google.Protobuf.xml
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\MySql.Data.xml
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ChangePictureWindow.g.cs
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ChangePictureWindow.baml

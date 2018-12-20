@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ImageHandler"
         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="1300">
+        Title="Главное окно" Height="700" Width="1300">
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -31,6 +31,7 @@
                 <Label Content="Различных цветов в картинке: " Foreground="Azure" FontFamily="OpenSans" x:Name="colorsCount"></Label>
                 <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
                 <Button x:Name="openMap" Content="Открыть карту" Click="OpenMap" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                <Button x:Name="changePicture" Content="Редактировать" Click="ChangePicture" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
             </StackPanel>
             <StackPanel Grid.Row="1" Width="280px" Margin="250,0,513,0">
                 <Label Content="Название картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="NameLabel"></Label>

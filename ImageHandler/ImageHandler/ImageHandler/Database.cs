@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Text;
 using System.Collections.Generic;
 using MySql.Data;
@@ -61,6 +62,21 @@ namespace ImageHandler
                 conn.Close();
             }
             return pictures;
+        }
+
+        public static void ChangePicture(Picture picture)
+        {
+            if (TryConnect())
+            {
+                /*
+                string sql = "Update main set name= @name, author=@author, date=@date, sozdanie=@sozdanie, hranenie=@hranenie, material=@material, pravila=@pravila where id = @id";
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = sql;
+                cmd.Parameters.Add("@name", SqlDbType.Text).Value = picture.Name;
+                cmd.Parameters.Add("@empId", SqlDbType.Decimal).Value = 7369;*/
+                conn.Close();
+            }
         }
     }
 }

@@ -229,6 +229,13 @@ namespace ImageHandler
             map.Show();
         }
 
+        private void ChangePicture(object sender, RoutedEventArgs e)
+        {
+            ChangePictureWindow window = new ChangePictureWindow(mainPicture);
+            window.Show();
+            UpdateMetaData();
+        }
+
         private void ResizeImage(string OrigFile, string NewFile, int NewWidth, int MaxHeight, bool ResizeIfWider)
         {
             System.Drawing.Image FullSizeImage = System.Drawing.Image.FromFile(OrigFile);
