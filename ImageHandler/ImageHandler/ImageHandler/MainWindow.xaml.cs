@@ -22,6 +22,8 @@ using Emgu.CV.Cuda;
 using System.Collections.Concurrent;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
+using System.Net;
+using System.Diagnostics;
 
 namespace ImageHandler
 {
@@ -30,43 +32,162 @@ namespace ImageHandler
     {
         Picture[] pictures;
         Picture mainPicture;
+        static string DataPath = @"C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\Data\";
+        static string DataMiniPath = @"C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\DataMini\";
+        static string DataMap = @"C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\DataMap\";
+        static string[] filePaths = Directory.GetFiles(DataPath);
+        static string[] fileMiniPaths = Directory.GetFiles(DataMiniPath);
+        static string[] fileMap = Directory.GetFiles(DataMap);
 
         public MainWindow()
         {
+
+            
+            WebClient client = new WebClient();
+            
+            
+            
+            if (filePaths.Length == 0)
+            {
+                pictures = Database.GetPictures();
+                for (int i = 0; i < pictures.Length; i++)
+                {
+                    try
+                    {
+                        BitmapImage bi31 = new BitmapImage();
+                        bi31.BeginInit();
+                        bi31.UriSource = new Uri(pictures[i].File);
+                        client.DownloadFile(bi31.UriSource, DataPath + pictures[i].ID + ".jpg");
+                        bi31.EndInit();
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
+                }
+            }
+           
+
+
+
+
             pictures = Database.GetPictures();
             InitializeComponent();
+           
 
-            foreach (Picture picture in pictures)
+            if (filePaths.Length != pictures.Length)
             {
-                ImageWPF image = new ImageWPF();
+
+                for (int i = 0, j = 0; i < pictures.Length; i++)
+                {
+                    bool searchID = false;
+                    for (j = 0; j < filePaths.Length; j++)
+                    {
+                        if (Path.GetFileNameWithoutExtension(filePaths[j]) == pictures[i].ID)
+                        {
+                            searchID = true;
+                            break;
+                        }
+                    }
+                    if (!searchID)
+                    {
+                        try
+                        {
+                            BitmapImage bi31 = new BitmapImage();
+                            bi31.BeginInit();
+                            bi31.UriSource = new Uri(pictures[i].File);
+                            client.DownloadFile(bi31.UriSource, DataPath + pictures[i].ID + ".jpg");
+                            bi31.EndInit();
+                        }
+                        catch(Exception e)
+                        {
+
+                        }
+                        
+                    }
+
+                }
+            }
+           
+
+
+
+            if (!(Directory.GetFiles(DataMiniPath) == Directory.GetFiles(DataPath)) || !(Directory.GetFiles(DataMap) == (Directory.GetFiles(DataPath))))
+            {
+                for (int i = 0; i < filePaths.Length; i++)
+                {
+                    int DataMiniLenght = DataMiniPath.Length;
+                    ResizeImage(filePaths[i], DataMiniPath + Path.GetFileName(filePaths[i]), 350, 350, false);
+                    ResizeImage(filePaths[i], DataMap + Path.GetFileName(filePaths[i]), 64, 64, false);
+                }
+            }
+
+
+            for (int i = 0; i < filePaths.Length; i++)
+            {
                 BitmapImage bi31 = new BitmapImage();
                 bi31.BeginInit();
-                bi31.UriSource = new Uri(picture.File);
+                fileMiniPaths = Directory.GetFiles(DataMiniPath);
+                bi31.UriSource = new Uri(fileMiniPaths[i]);
                 bi31.EndInit();
+                ImageWPF image = new ImageWPF();
+                image.Name = "id" + Path.GetFileNameWithoutExtension(filePaths[i]);
                 image.Source = bi31;
-                image.Width = 350;
                 image.HorizontalAlignment = HorizontalAlignment.Center;
                 imagesPanel.Children.Add(image);
             }
+          
+
             mainPicture = pictures[0];
-            BitmapImage bi3 = new BitmapImage();
+
+            /*BitmapImage bi3 = new BitmapImage();
             bi3.BeginInit();
             bi3.UriSource = new Uri(mainPicture.File);
-            bi3.EndInit();
-            MainImage.Source = bi3;
+            bi3.EndInit();*/
+
             UpdateMetaData();
         }
 
         private void ImageClicked(object sender, RoutedEventArgs e)
         {
             ImageWPF selectedImage = (ImageWPF) e.Source;
-            MainImage.Source = selectedImage.Source;
+            BitmapImage bm = new BitmapImage();
+            for (int i = 0; i < filePaths.Length; i++)
+            {
+                if (pictures[i].ID == selectedImage.Name.Substring(2))
+                {
+                    for(int j = 0; j< filePaths.Length; j++)
+                    {
+                        if(selectedImage.Name.Substring(2) == Path.GetFileNameWithoutExtension(filePaths[i]))
+                        {
+                            bm.BeginInit();
+                            bm.UriSource = new Uri(filePaths[i]);
+                            bm.EndInit();
+                            break;
+                        }  
+                    }
+                    mainPicture = pictures[i];
+                    break;
+                }
+            }
+            UpdateMetaData();
+
+          
+
+            MainImage.Source = bm;
             string selectImagePath = MainImage.Source.ToString().Substring(8);
             Image sourceBitmap = Image.FromFile(selectImagePath);
 
-            int lenght = selectImagePath.Length;
-            ResizeImage(selectImagePath, selectImagePath.Insert(lenght - 4, "-Mini"), 64, 64, false);
+           
 
+            
+            if(mainPicture.PercentOfBlue == 0.0 && mainPicture.PercentOfRed== 0.0 && mainPicture.PercentOfGreen == 0.0)
+            FindSaturation(selectImagePath, mainPicture);
+
+        }
+        private void FindSaturation(string selectImagePath, Picture picture)
+        {
+            Image sourceBitmap = Image.FromFile(selectImagePath);
             ConcurrentBag<ulong> redCol = new ConcurrentBag<ulong>();
             ConcurrentBag<ulong> greenCol = new ConcurrentBag<ulong>();
             ConcurrentBag<ulong> blueCol = new ConcurrentBag<ulong>();
@@ -121,14 +242,16 @@ namespace ImageHandler
             double procentBlue = b / (sourceBitmap.Height * sourceBitmap.Width);
             procentBlue = Math.Round(procentBlue / 256 * 100, 1);
 
+            picture.PercentOfRed = procentRed;
+            picture.PercentOfGreen = procentGreen;
+            picture.PercentOfBlue = procentBlue;
+
             PercentOfRedLabel.Content = "Насыщенность красного: " + procentRed + "%";
             PercentOfGreenLabel.Content = "Насыщенность зеленого: " + procentGreen + "%";
             PercentOfBlueLabel.Content = "Насыщенность синего: " + procentBlue + "%";
             sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
             resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
-
         }
-        
         private void AddPictures(object sender, RoutedEventArgs e)
         {
             var openFileDialog1 = new OpenFileDialog();
@@ -220,7 +343,7 @@ namespace ImageHandler
             };
 
             string serialized = JsonConvert.SerializeObject(mas);
-            using (FileStream fstream = new FileStream(@"note.js", FileMode.Create))
+            using (FileStream fstream = new FileStream(@"note.js", System.IO.FileMode.Create))
             {
                 byte[] array = System.Text.Encoding.UTF8.GetBytes("var picturesFile = '" + serialized + "';");
                 fstream.Write(array, 0, array.Length);

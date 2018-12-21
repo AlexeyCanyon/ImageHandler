@@ -16,11 +16,11 @@ namespace ImageHandler
         public string PlaceOfStorage { get; set; }
         public string Size { get; set; }
 
-        public float PercentOfRed { get; set; }
-        public float PercentOfGreen { get; set; }
-        public float PercentOfBlue { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        public double PercentOfRed { get; set; }
+        public double PercentOfGreen { get; set; }
+        public double PercentOfBlue { get; set; }
+        public float Height { get; set; }
+        public float Width { get; set; }
 
         public float Longitude { get; set; }
         public float Latitude { get; set; }

@@ -6,26 +6,26 @@
         xmlns:local="clr-namespace:ImageHandler"
         xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="Главное окно" Height="700" Width="1300">
+        Title="Главное окно" Height="768" Width="1366">
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2.5*" />
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
-            <StackPanel Image.MouseDown="ImageClicked" x:Name="imagesPanel">  
+            <StackPanel Image.MouseDown="ImageClicked" x:Name="imagesPanel">
             </StackPanel>
         </ScrollViewer>
-        
+
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Image Grid.Row="0" x:Name="MainImage" Source="D:/3.jpg" MouseDown="updatePixel"/>
-                
+
             <StackPanel Grid.Row="1">
-                <Label Content="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage"></Label> 
+                <Label Content="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage"></Label>
                 <Label Content="Разрешение файла: " Foreground="Azure" FontFamily="OpenSans" x:Name="resolutionOfImage"></Label>
                 <Label Content="Код текущего пикселя: " Foreground="Azure" FontFamily="OpenSans" x:Name="currentPixel"></Label>
                 <Label Content="Различных цветов в картинке: " Foreground="Azure" FontFamily="OpenSans" x:Name="colorsCount"></Label>
@@ -33,7 +33,7 @@
                 <Button x:Name="openMap" Content="Открыть карту" Click="OpenMap" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
                 <Button x:Name="changePicture" Content="Редактировать" Click="ChangePicture" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
             </StackPanel>
-            <StackPanel Grid.Row="1" Width="280px" Margin="250,0,513,0">
+            <StackPanel Grid.Row="1" Margin="250,0,336,0">
                 <Label Content="Название картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="NameLabel"></Label>
                 <Label Content="Автор картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="AuthorLabel"></Label>
                 <Label Content="Дата создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="YearOfCreationLabel"></Label>
@@ -41,7 +41,7 @@
                 <Label Content="Описание: " Foreground="Azure" FontFamily="OpenSans" x:Name="DescriptionLabel"></Label>
                 <Label Content="Правила использования: " Foreground="Azure" FontFamily="OpenSans" x:Name="RulesLabel"></Label>
             </StackPanel>
-            <StackPanel Grid.Row="1" Width="250px" Margin="550,0,308,0" RenderTransformOrigin="0.778,0.497">
+            <StackPanel Grid.Row="1" Margin="639,0,0,0">
                 <Label Content="Технология: " Foreground="Azure" FontFamily="OpenSans" x:Name="TechnologLabel"></Label>
                 <Label Content="Насыщенность красного: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfRedLabel"></Label>
                 <Label Content="Насыщенность зеленого: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfGreenLabel"></Label>
@@ -50,7 +50,7 @@
                 <Label Content="Место создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfCreationLabel"></Label>
             </StackPanel>
         </Grid>
-       
- 
+
+
     </Grid>
 </Window>

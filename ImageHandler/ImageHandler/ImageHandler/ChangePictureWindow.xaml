@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ImageHandler"
         mc:Ignorable="d"
-        Title="Редактирование картины" Height="466" Width="588">
-    <Grid Background="Black" Margin="0,0,0,-52">
+        Title="Редактирование картины" Height="516" Width="588">
+    <Grid Background="Black" Margin="0,0,0,-2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="317*"/>
             <ColumnDefinition Width="79*"/>
@@ -43,15 +43,20 @@
         <StackPanel Margin="351,0,10,0" Grid.ColumnSpan="2">
             <Label Content="Свойства для работы карты: " Foreground="Azure" FontFamily="OpenSans"></Label>
             <Label Content="Широта места создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="latitudePlaceOfCreationLabel"></Label>
-            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0" x:Name="latitudePlaceOfCreationTextbox"/>
             <Label Content="Долгота места создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="longitudePlaceOfCreationLabel"></Label>
-            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0"  x:Name="longitudePlaceOfCreationTextbox"/>
             <Label Content="Широта места хранения: " Foreground="Azure" FontFamily="OpenSans" x:Name="latitudePlaceOfStorageLabel"></Label>
-            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0" x:Name="latitudePlaceOfStorageTextbox"/>
             <Label Content="Долгота места хранения: " Foreground="Azure" FontFamily="OpenSans" x:Name="longitudePlaceOfStorageLabel"></Label>
-            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0" x:Name="longitudePlaceOfStorageTextbox"/>
             <Label Content="Год создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="MapYearOfCreationLabel"></Label>
-            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0"/>
+            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0" x:Name="MapYearOfCreationTextbox"/>
+            <Label Content="Высота картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="HeightPictureLabel"></Label>
+            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0" x:Name="HeightPictureTextbox"/>
+            <Label Content="Ширина картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="WidthPictureLabel"></Label>
+            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,118,0" x:Name="WidthPictureTextbox"/>
+            <Label Content="Исходные размеры: " Foreground="Azure" FontFamily="OpenSans" x:Name="SourceSizePictureLabel"></Label>
         </StackPanel>
     </Grid>
 </Window>

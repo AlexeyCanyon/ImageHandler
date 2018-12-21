@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using LiteDB;
+using System;
 
 namespace ImageHandler
 {
@@ -8,11 +10,33 @@ namespace ImageHandler
     public partial class ChangePictureWindow : Window
     {
         Picture picture;
+        
 
         public ChangePictureWindow(Picture picture)
         {
+            
+
             this.picture = picture;
             InitializeComponent();
+
+
+            var db = new LiteDatabase(@"MyData.db");
+            var PicturesCollection = db.GetCollection<Picture>("Pictures");
+
+            if (PicturesCollection.FindById(picture.ID) != null)
+            {
+
+                Picture pic = PicturesCollection.FindById(picture.ID);
+                latitudePlaceOfCreationTextbox.Text = pic.LatitudeCreation.ToString();
+                longitudePlaceOfCreationTextbox.Text = pic.LongitudeCreation.ToString();
+                latitudePlaceOfStorageTextbox.Text = pic.LatitudeStorage.ToString();
+                longitudePlaceOfStorageTextbox.Text = pic.LongitudeStorage.ToString();
+                MapYearOfCreationTextbox.Text = pic.YearOfCreation;
+                HeightPictureTextbox.Text = pic.Height.ToString();
+                WidthPictureTextbox.Text = pic.Width.ToString();
+            }
+
+
             NameText.Text = picture.Name;
             AuthorText.Text = picture.Author;
             YearOfCreationText.Text = picture.YearOfCreation;
@@ -22,10 +46,37 @@ namespace ImageHandler
             DescriptionText.Text = picture.Description;
             PlaceOfCreationText.Text = picture.PlaceOfCreation;
             PlaceOfStorageText.Text = picture.PlaceOfStorage;
+            SourceSizePictureLabel.Content = "Исходные размеры: " + picture.Size;
         }
 
         private void SavePicture(object sender, RoutedEventArgs e)
         {
+            var db = new LiteDatabase(@"MyData.db");
+            var PicturesCollection = db.GetCollection<Picture>("Pictures");
+
+            if (latitudePlaceOfCreationTextbox.Text.Length>0 &&
+               longitudePlaceOfCreationTextbox.Text.Length > 0 &&
+               latitudePlaceOfStorageTextbox.Text.Length > 0 &&
+               longitudePlaceOfStorageTextbox.Text.Length > 0 &&
+               MapYearOfCreationTextbox.Text.Length > 0 &&
+               HeightPictureTextbox.Text.Length > 0 &&
+               WidthPictureTextbox.Text.Length > 0)
+            {
+                Picture pic = new Picture();
+                pic.LatitudeCreation = Convert.ToSingle(latitudePlaceOfCreationTextbox.Text);
+                pic.LongitudeCreation = Convert.ToSingle(longitudePlaceOfCreationTextbox.Text);
+                pic.LatitudeStorage = Convert.ToSingle(latitudePlaceOfStorageTextbox.Text);
+                pic.LongitudeStorage = Convert.ToSingle(longitudePlaceOfStorageTextbox.Text);
+                pic.YearOfCreation = MapYearOfCreationTextbox.Text;
+                pic.Height = Convert.ToInt32(HeightPictureTextbox.Text);
+                pic.Width = Convert.ToInt32(WidthPictureTextbox.Text);
+                pic.ID = picture.ID;
+                PicturesCollection.Insert(pic);
+            }
+
+
+
+
             picture.Name = NameText.Text;
             picture.Author = AuthorText.Text;
             picture.YearOfCreation = YearOfCreationText.Text;
