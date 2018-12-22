@@ -35,8 +35,15 @@ function createMarkers(map) {
     minYear = document.getElementById('lowYear').value;
     for (var i = 0; i < mas.length; i++){ //Создание и отображение меток, отображающих картины
         if (mas[i].yearOfCreation <= maxYear && mas[i].yearOfCreation >= minYear){
-            var markerr = DG.marker([mas[i].longitude, mas[i].latitude]);
-
+			myIcon = DG.icon({
+                    iconUrl: 'DataMap/' + mas[i].ID + '.jpg',
+                    iconSize: [50, 50]
+                });
+				
+            var markerr = DG.marker([mas[i].longitude, mas[i].latitude], {
+                    icon: myIcon
+                });
+			
             var myPopUp = DG.popup({ //Создание попапа - описания метки
                 maxWidth: 350,
                 minWidth: 230
