@@ -1,3 +1,44 @@
 [1216/120931.799:ERROR:backend_impl.cc(1065)] Critical error found -8
 [1216/120931.800:WARNING:storage_block-inl.h(131)] Failed data load.
 [1216/120931.800:ERROR:entry_impl.cc(985)] Failed to save user data
+[1222/213647.770:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token З in JSON at position 12066", source: file:///test.html (1)
+[1222/213803.238:ERROR:block_files.cc(471)] Failed to open GPUCache\data_3
+[1222/213803.284:ERROR:cache_util_win.cc(19)] Unable to move the cache: 5
+[1222/213803.306:ERROR:cache_util.cc(140)] Unable to move cache folder GPUCache to old_GPUCache_000
+[1222/213803.306:ERROR:disk_cache.cc(168)] Unable to create cache
+[1222/213803.315:ERROR:shader_disk_cache.cc(620)] Shader Cache Creation failed: -2
+[1222/213804.615:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token З in JSON at position 12066", source: file:///test.html (1)
+[1222/214228.365:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token З in JSON at position 12074", source: file:///test.html (1)
+[1222/214242.121:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1389x732, other: 1393x741))
+
+[1222/214302.992:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token З in JSON at position 12074", source: file:///test.html (1)
+[1222/214305.399:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214308.117:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214308.249:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214308.383:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214308.414:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214328.416:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214328.449:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214333.483:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214333.515:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/214338.048:ERROR:render_widget_host_impl.cc(2912)] Surface invariants violation: [OOPIF? 0] RenderWidgetSurfaceProperties(size(this: 1284x671, other: 1284x666))
+
+[1222/222954.630:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token З in JSON at position 6193", source: file:///test.html (1)
+[1222/223914.756:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token З in JSON at position 6175", source: file:///test.html (1)
+[1222/232430.967:INFO:CONSOLE(1)] "Uncaught SyntaxError: Unexpected token З in JSON at position 5706", source: file:///test.html (1)
+[1222/233144.571:INFO:CONSOLE(64)] "Uncaught ReferenceError: DG is not defined", source: file:///map.js (64)
+[1222/233627.118:ERROR:block_files.cc(471)] Failed to open GPUCache\data_3
+[1222/233627.122:ERROR:cache_util_win.cc(19)] Unable to move the cache: 5
+[1222/233627.129:ERROR:cache_util.cc(140)] Unable to move cache folder GPUCache to old_GPUCache_000
+[1222/233627.129:ERROR:disk_cache.cc(168)] Unable to create cache
+[1222/233627.130:ERROR:shader_disk_cache.cc(620)] Shader Cache Creation failed: -2
+[1222/234114.839:INFO:CONSOLE(64)] "Uncaught ReferenceError: DG is not defined", source: file:///map.js (64)

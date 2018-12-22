@@ -2,9 +2,12 @@
 class Picture //Класс картины
 {
     constructor(item) {
+        this.ID = item['ID'];
         this.name = item['Name'];
         this.author = item['Author'];
-        this.yearOfCreation = item['YearOfCreation'];
+        this.yearOfCreation = item['YearMap'];
+        this.technology = item['Technology'];
+        this.material = item['Material'];
 
         this.percentOfRed = item['PercentOfRed'];
         this.percentOfGreen = item['PercentOfGreen'];
@@ -12,8 +15,8 @@ class Picture //Класс картины
         this.height = item['Height'];
         this.width = item['Width'];
 
-        this.longitude = item['Longitude'];
-        this.latitude = item['Latitude'];
+        this.longitude = item['LongitudeStorage'];
+        this.latitude = item['LatitudeStorage'];
         this.longitudeCreation = item['LongitudeCreation'];
         this.latitudeCreation = item['LatitudeCreation'];
         this.longitudeStorage = item['LongitudeStorage'];
@@ -43,6 +46,8 @@ function createMarkers(map) {
                     + ' <br />Год создания: ' + mas[i].yearOfCreation
                     + ' <br />Высота: ' + mas[i].height
                     + ' <br />Ширина: ' + mas[i].width
+                    + ' <br />Материал: ' + mas[i].material
+                    + ' <br />Технология: ' + mas[i].technology
                     + ' <br />Содержание цветов:'
                     + ' <br />Красного: ' + mas[i].percentOfRed + '%'
                     + ' <br />Зелёного: ' + mas[i].percentOfGreen + '%'

@@ -14,18 +14,14 @@ namespace ImageHandler
 
         public ChangePictureWindow(Picture picture)
         {
-            
-
             this.picture = picture;
             InitializeComponent();
-
 
             var db = new LiteDatabase(@"MyData.db");
             var PicturesCollection = db.GetCollection<Picture>("Pictures");
 
             if (PicturesCollection.FindById(picture.ID) != null)
             {
-
                 Picture pic = PicturesCollection.FindById(picture.ID);
                 latitudePlaceOfCreationTextbox.Text = pic.LatitudeCreation.ToString();
                 longitudePlaceOfCreationTextbox.Text = pic.LongitudeCreation.ToString();
@@ -35,7 +31,6 @@ namespace ImageHandler
                 HeightPictureTextbox.Text = pic.Height.ToString();
                 WidthPictureTextbox.Text = pic.Width.ToString();
             }
-
 
             NameText.Text = picture.Name;
             AuthorText.Text = picture.Author;
@@ -72,10 +67,14 @@ namespace ImageHandler
                 pic.Width = Convert.ToInt32(WidthPictureTextbox.Text);
                 pic.ID = picture.ID;
                 PicturesCollection.Insert(pic);
+                picture.LatitudeCreation = pic.LatitudeCreation;
+                picture.LongitudeCreation = pic.LongitudeCreation;
+                picture.LatitudeStorage = pic.LatitudeStorage;
+                picture.LongitudeStorage = pic.LongitudeStorage;
+                picture.YearMap = Convert.ToInt32(pic.YearOfCreation);
+                picture.Height = pic.Height;
+                picture.Width = pic.Width;
             }
-
-
-
 
             picture.Name = NameText.Text;
             picture.Author = AuthorText.Text;

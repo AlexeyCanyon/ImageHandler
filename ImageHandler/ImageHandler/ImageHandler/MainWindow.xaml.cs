@@ -31,23 +31,17 @@ namespace ImageHandler
     public partial class MainWindow
     {
         Picture[] pictures;
-        Picture mainPicture;
-        static string DataPath = @"C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\Data\";
-        static string DataMiniPath = @"C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\DataMini\";
-        static string DataMap = @"C:\Users\aleks\3 семестр\Проект\Проект\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\DataMap\";
+        int mainPictureNum;
+        static string DataPath = @"C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\Data\";
+        static string DataMiniPath = @"C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\DataMini\";
+        static string DataMap = @"C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\DataMap\";
         static string[] filePaths = Directory.GetFiles(DataPath);
         static string[] fileMiniPaths = Directory.GetFiles(DataMiniPath);
         static string[] fileMap = Directory.GetFiles(DataMap);
 
         public MainWindow()
         {
-
-            
-            WebClient client = new WebClient();
-            
-            
-            
-            if (filePaths.Length == 0)
+            /*if (filePaths.Length == 0)
             {
                 pictures = Database.GetPictures();
                 for (int i = 0; i < pictures.Length; i++)
@@ -65,19 +59,14 @@ namespace ImageHandler
 
                     }
                 }
-            }
-           
-
-
-
+            }*/
 
             pictures = Database.GetPictures();
             InitializeComponent();
            
-
             if (filePaths.Length != pictures.Length)
             {
-
+                WebClient client = new WebClient();
                 for (int i = 0, j = 0; i < pictures.Length; i++)
                 {
                     bool searchID = false;
@@ -98,30 +87,31 @@ namespace ImageHandler
                             bi31.UriSource = new Uri(pictures[i].File);
                             client.DownloadFile(bi31.UriSource, DataPath + pictures[i].ID + ".jpg");
                             bi31.EndInit();
+                            
                         }
                         catch(Exception e)
                         {
-
+                            MessageBox.Show("Ошибка загрузки картины " + pictures[i].ID +  " из базы: " + e.Message);
                         }
-                        
                     }
 
                 }
+                client.Dispose();
             }
-           
 
-
-
-            if (!(Directory.GetFiles(DataMiniPath) == Directory.GetFiles(DataPath)) || !(Directory.GetFiles(DataMap) == (Directory.GetFiles(DataPath))))
+            filePaths = Directory.GetFiles(DataPath);
+            if (!(Directory.GetFiles(DataMiniPath) == filePaths) || !(Directory.GetFiles(DataMap) == filePaths))
             {
                 for (int i = 0; i < filePaths.Length; i++)
                 {
-                    int DataMiniLenght = DataMiniPath.Length;
-                    ResizeImage(filePaths[i], DataMiniPath + Path.GetFileName(filePaths[i]), 350, 350, false);
-                    ResizeImage(filePaths[i], DataMap + Path.GetFileName(filePaths[i]), 64, 64, false);
+                    if (filePaths[i] != fileMiniPaths[i])
+                        ResizeImage(filePaths[i], DataMiniPath + Path.GetFileName(filePaths[i]), 350, 350, false);
+                    if (filePaths[i] != fileMap[i])
+                        ResizeImage(filePaths[i], DataMap + Path.GetFileName(filePaths[i]), 64, 64, false);
+                    fileMiniPaths = Directory.GetFiles(DataMiniPath);
+                    fileMap = Directory.GetFiles(DataMap);
                 }
             }
-
 
             for (int i = 0; i < filePaths.Length; i++)
             {
@@ -136,9 +126,8 @@ namespace ImageHandler
                 image.HorizontalAlignment = HorizontalAlignment.Center;
                 imagesPanel.Children.Add(image);
             }
-          
 
-            mainPicture = pictures[0];
+            mainPictureNum = 0;
 
             /*BitmapImage bi3 = new BitmapImage();
             bi3.BeginInit();
@@ -152,7 +141,7 @@ namespace ImageHandler
         {
             ImageWPF selectedImage = (ImageWPF) e.Source;
             BitmapImage bm = new BitmapImage();
-            for (int i = 0; i < filePaths.Length; i++)
+            for (int i = 0; i < pictures.Length; i++)
             {
                 if (pictures[i].ID == selectedImage.Name.Substring(2))
                 {
@@ -166,25 +155,21 @@ namespace ImageHandler
                             break;
                         }  
                     }
-                    mainPicture = pictures[i];
+                    mainPictureNum = i;
                     break;
                 }
             }
             UpdateMetaData();
 
-          
-
             MainImage.Source = bm;
             string selectImagePath = MainImage.Source.ToString().Substring(8);
             Image sourceBitmap = Image.FromFile(selectImagePath);
 
-           
-
-            
-            if(mainPicture.PercentOfBlue == 0.0 && mainPicture.PercentOfRed== 0.0 && mainPicture.PercentOfGreen == 0.0)
-            FindSaturation(selectImagePath, mainPicture);
+            //if(pictures[mainPictureNum].PercentOfBlue == 0.0 && pictures[mainPictureNum].PercentOfRed== 0.0 && pictures[mainPictureNum].PercentOfGreen == 0.0)
+            //    FindSaturation(selectImagePath, pictures[mainPictureNum]);
 
         }
+
         private void FindSaturation(string selectImagePath, Picture picture)
         {
             Image sourceBitmap = Image.FromFile(selectImagePath);
@@ -252,6 +237,7 @@ namespace ImageHandler
             sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
             resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
         }
+
         private void AddPictures(object sender, RoutedEventArgs e)
         {
             var openFileDialog1 = new OpenFileDialog();
@@ -284,65 +270,7 @@ namespace ImageHandler
 
         private void OpenMap(object sender, RoutedEventArgs e)
         {
-            Picture[] mas = new Picture[3];
-            mas[0] = new Picture()
-            {
-                Name = "Вася",
-                Author = "Пушкин",
-                YearOfCreation = "1900",
-                Longitude = 20.3f,
-                Latitude = 50.5f,
-                LongitudeCreation = 100f,
-                LatitudeCreation = 10f,
-                LongitudeStorage = 20.3f,
-                LatitudeStorage = 50.5f,
-                Height = 50,
-                Width = 200,
-                PercentOfRed = 30f,
-                PercentOfGreen = 70f,
-                PercentOfBlue = 0f,
-                Rules = "Лол кек"
-            };
-
-            mas[1] = new Picture()
-            {
-                Name = "Коля",
-                Author = "Hideo Kojima",
-                YearOfCreation = "900",
-                Longitude = 28.3f,
-                Latitude = 52.5f,
-                LongitudeCreation = 10f,
-                LatitudeCreation = 17f,
-                LongitudeStorage = 28.3f,
-                LatitudeStorage = 52.5f,
-                Height = 70,
-                Width = 290,
-                PercentOfRed = 50f,
-                PercentOfGreen = 20f,
-                PercentOfBlue = 30f,
-                Rules = "Лол кек чабурек"
-            };
-
-            mas[2] = new Picture()
-            {
-                Name = "Корней",
-                Author = "Эх",
-                YearOfCreation = "100",
-                Longitude = 50.3f,
-                Latitude = 58.5f,
-                LongitudeCreation = 85f,
-                LatitudeCreation = 32f,
-                LongitudeStorage = 50.3f,
-                LatitudeStorage = 58.5f,
-                Height = 8000,
-                Width = 120,
-                PercentOfRed = 10f,
-                PercentOfGreen = 20f,
-                PercentOfBlue = 70f,
-                Rules = "Лол кек"
-            };
-
-            string serialized = JsonConvert.SerializeObject(mas);
+            string serialized = JsonConvert.SerializeObject(GetCollectionForMap());
             using (FileStream fstream = new FileStream(@"note.js", System.IO.FileMode.Create))
             {
                 byte[] array = System.Text.Encoding.UTF8.GetBytes("var picturesFile = '" + serialized + "';");
@@ -354,7 +282,7 @@ namespace ImageHandler
 
         private void ChangePicture(object sender, RoutedEventArgs e)
         {
-            ChangePictureWindow window = new ChangePictureWindow(mainPicture);
+            ChangePictureWindow window = new ChangePictureWindow(pictures[mainPictureNum]);
             window.Show();
             UpdateMetaData();
         }
@@ -419,18 +347,42 @@ namespace ImageHandler
 
         private void UpdateMetaData()
         {
-            NameLabel.Content = "Название картины: " + mainPicture.Name;
-            AuthorLabel.Content = "Автор картины: " + mainPicture.Author;
-            YearOfCreationLabel.Content = "Дата создания: " + mainPicture.YearOfCreation;
-            MaterialLabel.Content = "Материал: " + mainPicture.Material;
-            DescriptionLabel.Content = "Описание: " + mainPicture.Description;
-            RulesLabel.Content = "Правила использования: " + mainPicture.Rules;
-            TechnologLabel.Content = "Технология: " + mainPicture.Technology;
-            PercentOfRedLabel.Content = "Насыщенность красного: " + mainPicture.PercentOfRed + "%";
-            PercentOfGreenLabel.Content = "Насыщенность зеленого: " + mainPicture.PercentOfGreen + "%";
-            PercentOfBlueLabel.Content = "Насыщенность синего: " + mainPicture.PercentOfBlue + "%";
-            PlaceOfStorageLabel.Content = "Место хранения: " + mainPicture.PlaceOfStorage;
-            PlaceOfCreationLabel.Content = "Место создания: " + mainPicture.PlaceOfCreation;
+            NameLabel.Content = "Название картины: " + pictures[mainPictureNum].Name;
+            AuthorLabel.Content = "Автор картины: " + pictures[mainPictureNum].Author;
+            YearOfCreationLabel.Content = "Дата создания: " + pictures[mainPictureNum].YearOfCreation;
+            MaterialLabel.Content = "Материал: " + pictures[mainPictureNum].Material;
+            DescriptionLabel.Content = "Описание: " + pictures[mainPictureNum].Description;
+            RulesLabel.Content = "Правила использования: " + pictures[mainPictureNum].Rules;
+            TechnologLabel.Content = "Технология: " + pictures[mainPictureNum].Technology;
+            PercentOfRedLabel.Content = "Насыщенность красного: " + pictures[mainPictureNum].PercentOfRed + "%";
+            PercentOfGreenLabel.Content = "Насыщенность зеленого: " + pictures[mainPictureNum].PercentOfGreen + "%";
+            PercentOfBlueLabel.Content = "Насыщенность синего: " + pictures[mainPictureNum].PercentOfBlue + "%";
+            PlaceOfStorageLabel.Content = "Место хранения: " + pictures[mainPictureNum].PlaceOfStorage;
+            PlaceOfCreationLabel.Content = "Место создания: " + pictures[mainPictureNum].PlaceOfCreation;
+        }
+
+        private MapPicture[] GetCollectionForMap()
+        {
+            MapPicture[] mas = new MapPicture[pictures.Length];
+            for (int i = 0; i < pictures.Length; i++)
+            {
+                mas[i].Author = pictures[i].Author.Replace('"', ' ');
+                mas[i].Height = pictures[i].Height;
+                mas[i].Width = pictures[i].Width;
+                mas[i].ID = pictures[i].ID;
+                mas[i].LatitudeCreation = pictures[i].LatitudeCreation;
+                mas[i].LatitudeStorage = pictures[i].LatitudeStorage;
+                mas[i].LongitudeCreation = pictures[i].LongitudeCreation;
+                mas[i].LongitudeStorage = pictures[i].LongitudeStorage;
+                mas[i].Material = pictures[i].Material;
+                mas[i].Name = pictures[i].Name.Replace('"', ' ');
+                mas[i].PercentOfBlue = pictures[i].PercentOfBlue;
+                mas[i].PercentOfGreen = pictures[i].PercentOfGreen;
+                mas[i].PercentOfRed = pictures[i].PercentOfRed;
+                mas[i].Technology = pictures[i].Technology;
+                mas[i].YearMap = pictures[i].YearMap;
+            }
+            return mas;
         }
 
     }
