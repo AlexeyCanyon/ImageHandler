@@ -339,8 +339,9 @@ namespace ImageHandler
             NewImage.Save(NewFile);
         }
 
-        private void FindFace(string selectImagePath)
+        private void FindFace(object sender, RoutedEventArgs e)
         {
+            string selectImagePath = AppDomain.CurrentDomain.BaseDirectory + "DataMini\\" + pictures[mainPictureNum].ID + ".jpg"; 
             IImage image;
             //            image = new UMat(selectImagePath, ImreadModes.Color); //UMat version
             image = new Mat(selectImagePath, ImreadModes.Color); //CPU version
@@ -362,7 +363,8 @@ namespace ImageHandler
             //display the image 
             using (InputArray iaImage = image.GetInputArray())
                 ImageViewer.Show(image, String.Format(
-                    "Completed face and eye detection using {0} in {1} milliseconds",
+                    "Завершен поиск {0} лиц с помощью {1} за {2} мс",
+                    faces.Count,
                     (iaImage.Kind == InputArray.Type.CudaGpuMat && CudaInvoke.HasCuda) ? "CUDA" :
                     (iaImage.IsUMat && CvInvoke.UseOpenCL) ? "OpenCL"
                     : "CPU",
@@ -377,7 +379,6 @@ namespace ImageHandler
             MaterialLabel.Content = "Материал: " + pictures[mainPictureNum].Material;
             DescriptionLabel.Content = "Описание: " + pictures[mainPictureNum].Description;
             RulesLabel.Content = "Правила использования: " + pictures[mainPictureNum].Rules;
-            TechnologLabel.Content = "Технология: " + pictures[mainPictureNum].Technology;
             PercentOfRedLabel.Content = "Насыщенность красного: " + pictures[mainPictureNum].PercentOfRed + "%";
             PercentOfGreenLabel.Content = "Насыщенность зеленого: " + pictures[mainPictureNum].PercentOfGreen + "%";
             PercentOfBlueLabel.Content = "Насыщенность синего: " + pictures[mainPictureNum].PercentOfBlue + "%";
@@ -403,7 +404,6 @@ namespace ImageHandler
                 mas[i].PercentOfBlue = pictures[i].PercentOfBlue;
                 mas[i].PercentOfGreen = pictures[i].PercentOfGreen;
                 mas[i].PercentOfRed = pictures[i].PercentOfRed;
-                mas[i].Technology = pictures[i].Technology;
                 mas[i].YearMap = pictures[i].YearMap;
             }
             return mas;

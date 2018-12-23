@@ -14,7 +14,8 @@ namespace ImageHandler
    {
       public static void Detect(
          IInputArray image, String faceFileName, String eyeFileName,
-         List<Rectangle> faces, List<Rectangle> eyes,
+         List<Rectangle> faces, 
+         List<Rectangle> eyes,
          out long detectionTime)
       {
          Stopwatch watch;

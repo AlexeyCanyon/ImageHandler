@@ -6,7 +6,6 @@ namespace ImageHandler
         public string Name { get; set; }
         public string Author { get; set; }
         public string Material { get; set; }
-        public string Technology { get; set; }
         public double PercentOfRed { get; set; }
         public double PercentOfGreen { get; set; }
         public double PercentOfBlue { get; set; }
@@ -31,7 +30,6 @@ namespace ImageHandler
         public string Rules { get; set; }
         public string Description { get; set; }
         public string Material { get; set; }
-        public string Technology { get; set; }
         public string PlaceOfCreation { get; set; }
         public string PlaceOfStorage { get; set; }
         public string Size { get; set; }

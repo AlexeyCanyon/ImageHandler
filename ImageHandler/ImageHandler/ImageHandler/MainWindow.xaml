@@ -32,6 +32,7 @@
                 <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
                 <Button x:Name="openMap" Content="Открыть карту" Click="OpenMap" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
                 <Button x:Name="changePicture" Content="Редактировать" Click="ChangePicture" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                <Button x:Name="findFace" Content="Распознать лица" Click="FindFace" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
             </StackPanel>
             <StackPanel Grid.Row="1" Margin="250,0,336,0">
                 <Label Content="Название картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="NameLabel"></Label>
@@ -42,7 +43,6 @@
                 <Label Content="Правила использования: " Foreground="Azure" FontFamily="OpenSans" x:Name="RulesLabel"></Label>
             </StackPanel>
             <StackPanel Grid.Row="1" Margin="639,0,0,0">
-                <Label Content="Технология: " Foreground="Azure" FontFamily="OpenSans" x:Name="TechnologLabel"></Label>
                 <Label Content="Насыщенность красного: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfRedLabel"></Label>
                 <Label Content="Насыщенность зеленого: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfGreenLabel"></Label>
                 <Label Content="Насыщенность синего: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfBlueLabel"></Label>

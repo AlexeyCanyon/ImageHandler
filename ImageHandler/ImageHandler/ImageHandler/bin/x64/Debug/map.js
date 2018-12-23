@@ -6,7 +6,6 @@ class Picture //Класс картины
         this.name = item['Name'];
         this.author = item['Author'];
         this.yearOfCreation = item['YearMap'];
-        this.technology = item['Technology'];
         this.material = item['Material'];
 
         this.percentOfRed = item['PercentOfRed'];
@@ -54,7 +53,6 @@ function createMarkers(map) {
                     + ' <br />Высота: ' + mas[i].height
                     + ' <br />Ширина: ' + mas[i].width
                     + ' <br />Материал: ' + mas[i].material
-                    + ' <br />Технология: ' + mas[i].technology
                     + ' <br />Содержание цветов:'
                     + ' <br />Красного: ' + mas[i].percentOfRed + '%'
                     + ' <br />Зелёного: ' + mas[i].percentOfGreen + '%'
@@ -99,13 +97,13 @@ DG.then(function() {
             rectangles[i].remove();
         coords = [];
         rectangles = [];
-    }
+    };
 
     document.getElementById("setDateRangeButton").onclick = function(){
         map.removeLayer(markers);
         markers = createMarkers(map);
         markers.addTo(map);
-    }
+    };
 
     var markers = createMarkers(map);
     markers.addTo(map);
@@ -124,6 +122,7 @@ DG.then(function() {
                 var area = DG.latLngBounds(e.target.getLatLngs()); //Получаем границы области, на которую щелкнули
 
                 var count = 0, averageHeight = 0, averageWidth = 0, averagePercentOfRed = 0, averagePercentOfGreen = 0, averagePercentOfBlue = 0;
+                var mats = new Object();
                 for (var i = 0; i < mas.length; i++) { //Перебираем массив точек и проверяем, какие из них попали в выделенную область
                     if (area.contains([mas[i].longitude, mas[i].latitude])){
                         count++; //Считаем колчиество картин в области
@@ -132,6 +131,12 @@ DG.then(function() {
                         averagePercentOfRed += mas[i].percentOfRed;
                         averagePercentOfGreen += mas[i].percentOfGreen;
                         averagePercentOfBlue += mas[i].percentOfBlue;
+                        if (mats[mas[i].material] !== undefined)
+                        {
+                            mats[mas[i].material] += 1;
+                        }
+                        else
+                            mats[mas[i].material] = 1;
                     }
                 }
                 averageHeight /= count;
@@ -140,16 +145,22 @@ DG.then(function() {
                 averagePercentOfGreen /= count;
                 averagePercentOfBlue /= count;
 
-                var myPopUp = DG.popup({ //Создание попапа - описания области
-                    maxWidth: 500,
-                    minWidth: 270
-                }).setContent('<p>Количество картин в области: ' + count
+                content = '<p>Количество картин в области: ' + count
                     + ' <br />Средние значения: '
                     + ' <br />  Высота картины: ' + averageHeight.toFixed(2)
                     + ' <br />  Ширина картины: ' + averageWidth.toFixed(2)
                     + ' <br />  Процент красного: ' + averagePercentOfRed.toFixed(2) + '%'
                     + ' <br />  Процент зеленого: ' + averagePercentOfGreen.toFixed(2) + '%'
-                    + ' <br />  Процент синего: ' + averagePercentOfBlue.toFixed(2) + '% </p>');
+                    + ' <br />  Процент синего: ' + averagePercentOfBlue.toFixed(2) + '%'
+                    + ' <br />  Материалы:';
+                for (var key in mats)
+                    content += ' <br />' + key + ': ' + (mats[key]/count*100).toFixed(2) + '%';
+                content += '</p>';
+
+                var myPopUp = DG.popup({ //Создание попапа - описания области
+                    maxWidth: 500,
+                    minWidth: 270
+                }).setContent(content);
                 e.target.bindPopup(myPopUp).openPopup(); //Прикрепление созданного попапа к области
             });
 

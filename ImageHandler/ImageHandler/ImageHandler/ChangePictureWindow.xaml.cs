@@ -38,7 +38,6 @@ namespace ImageHandler
             YearOfCreationText.Text = picture.YearOfCreation;
             MaterialText.Text = picture.Material;
             RulesText.Text = picture.Rules;
-            TechnologyText.Text = picture.Technology;
             DescriptionText.Text = picture.Description;
             PlaceOfCreationText.Text = picture.PlaceOfCreation;
             PlaceOfStorageText.Text = picture.PlaceOfStorage;
@@ -100,7 +99,6 @@ namespace ImageHandler
             picture.YearOfCreation = YearOfCreationText.Text;
             picture.Material = MaterialText.Text;
             picture.Rules = RulesText.Text;
-            picture.Technology = TechnologyText.Text;
             picture.Description = DescriptionText.Text;
             picture.PlaceOfCreation = PlaceOfCreationText.Text;
             picture.PlaceOfStorage = PlaceOfStorageText.Text;

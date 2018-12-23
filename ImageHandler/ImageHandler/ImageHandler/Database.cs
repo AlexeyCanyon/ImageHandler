@@ -68,13 +68,14 @@ namespace ImageHandler
         {
             if (TryConnect())
             {
-                /*
-                string sql = "Update main set name= @name, author=@author, date=@date, sozdanie=@sozdanie, hranenie=@hranenie, material=@material, pravila=@pravila where id = @id";
+                
+                string sql = "Update main set name= '"+ picture.Name + "', author='" + picture.Author + "', date='"+ picture.YearOfCreation + 
+                    "', sozdanie='" + picture.PlaceOfCreation + "', hranenie='" + picture.PlaceOfStorage + "', material='" + picture.Material + 
+                    "', pravila='"+ picture.Rules + "' where id = " + picture.ID;
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conn;
                 cmd.CommandText = sql;
-                cmd.Parameters.Add("@name", SqlDbType.Text).Value = picture.Name;
-                cmd.Parameters.Add("@empId", SqlDbType.Decimal).Value = 7369;*/
+                cmd.ExecuteNonQuery();
                 conn.Close();
             }
         }
