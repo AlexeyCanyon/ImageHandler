@@ -24,6 +24,7 @@ using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using System.Net;
 using System.Diagnostics;
+using LiteDB;
 
 namespace ImageHandler
 {
@@ -32,9 +33,9 @@ namespace ImageHandler
     {
         Picture[] pictures;
         int mainPictureNum;
-        static string DataPath = @"C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\Data\";
-        static string DataMiniPath = @"C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\DataMini\";
-        static string DataMap = @"C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\DataMap\";
+        static string DataPath = AppDomain.CurrentDomain.BaseDirectory + "Data\\";
+        static string DataMiniPath = AppDomain.CurrentDomain.BaseDirectory + "DataMini\\";
+        static string DataMap = AppDomain.CurrentDomain.BaseDirectory + "DataMap\\";
         static string[] filePaths = Directory.GetFiles(DataPath);
         static string[] fileMiniPaths = Directory.GetFiles(DataMiniPath);
         static string[] fileMap = Directory.GetFiles(DataMap);
@@ -61,9 +62,32 @@ namespace ImageHandler
                 }
             }*/
 
+           
             pictures = Database.GetPictures();
             InitializeComponent();
-           
+
+            var db = new LiteDatabase(@"MyData.db");
+            var PicturesCollection = db.GetCollection<Picture>("Pictures");
+
+            if (PicturesCollection.Count() != 0)
+            {
+                for (int i = 0; i < pictures.Length; i++)
+                {
+                    if (PicturesCollection.FindById(pictures[i].ID) != null)
+                    {
+                        Picture tempPicture = PicturesCollection.FindById(pictures[i].ID);
+                        pictures[i].LatitudeCreation = tempPicture.LatitudeCreation;
+                        pictures[i].LongitudeCreation = tempPicture.LongitudeCreation;
+                        pictures[i].LatitudeStorage = tempPicture.LatitudeStorage;
+                        pictures[i].LongitudeStorage = tempPicture.LongitudeStorage;
+                        pictures[i].YearMap = tempPicture.YearMap;
+                        pictures[i].Width = tempPicture.Width;
+                        pictures[i].Height = tempPicture.Height;
+                    }
+                }
+            }
+
+
             if (filePaths.Length != pictures.Length)
             {
                 WebClient client = new WebClient();
