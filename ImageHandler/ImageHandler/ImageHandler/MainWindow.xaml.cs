@@ -190,8 +190,15 @@ namespace ImageHandler
             Image sourceBitmap = Image.FromFile(selectImagePath);
 
            if(pictures[mainPictureNum].PercentOfBlue == 0.0 && pictures[mainPictureNum].PercentOfRed== 0.0 && pictures[mainPictureNum].PercentOfGreen == 0.0)
-               FindSaturation(selectedImage.Source.ToString().Substring(8), pictures[mainPictureNum]);
-
+            {
+                FindSaturation(selectedImage.Source.ToString().Substring(8), pictures[mainPictureNum]);
+                var db = new LiteDatabase(@"MyData.db");
+                var PicturesCollection = db.GetCollection<Picture>("Pictures");
+                if (PicturesCollection.FindById(pictures[mainPictureNum].ID) != null)
+                    PicturesCollection.Update(pictures[mainPictureNum]);
+                else
+                    PicturesCollection.Insert(pictures[mainPictureNum]);
+            }
         }
 
         private void FindSaturation(string selectImagePath, Picture picture)
