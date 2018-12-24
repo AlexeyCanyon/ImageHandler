@@ -171,10 +171,10 @@ namespace ImageHandler
                 {
                     for(int j = 0; j< filePaths.Length; j++)
                     {
-                        if(selectedImage.Name.Substring(2) == Path.GetFileNameWithoutExtension(filePaths[i]))
+                        if(selectedImage.Name.Substring(2) == Path.GetFileNameWithoutExtension(filePaths[j]))
                         {
                             bm.BeginInit();
-                            bm.UriSource = new Uri(filePaths[i]);
+                            bm.UriSource = new Uri(filePaths[j]);
                             bm.EndInit();
                             break;
                         }  
@@ -189,8 +189,8 @@ namespace ImageHandler
             string selectImagePath = MainImage.Source.ToString().Substring(8);
             Image sourceBitmap = Image.FromFile(selectImagePath);
 
-            //if(pictures[mainPictureNum].PercentOfBlue == 0.0 && pictures[mainPictureNum].PercentOfRed== 0.0 && pictures[mainPictureNum].PercentOfGreen == 0.0)
-            //    FindSaturation(selectImagePath, pictures[mainPictureNum]);
+           if(pictures[mainPictureNum].PercentOfBlue == 0.0 && pictures[mainPictureNum].PercentOfRed== 0.0 && pictures[mainPictureNum].PercentOfGreen == 0.0)
+               FindSaturation(selectedImage.Source.ToString().Substring(8), pictures[mainPictureNum]);
 
         }
 
