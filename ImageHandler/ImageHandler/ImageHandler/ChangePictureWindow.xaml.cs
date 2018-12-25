@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using LiteDB;
 using System;
 
 namespace ImageHandler
@@ -16,22 +15,6 @@ namespace ImageHandler
         {
             this.picture = picture;
             InitializeComponent();
-
-            /*
-            var db = new LiteDatabase(@"MyData.db");
-            var PicturesCollection = db.GetCollection<Picture>("Pictures");
-            
-            if (PicturesCollection.FindById(picture.ID) != null)
-            {
-                Picture pic = PicturesCollection.FindById(picture.ID);
-                latitudePlaceOfCreationTextbox.Text = pic.LatitudeCreation.ToString();
-                longitudePlaceOfCreationTextbox.Text = pic.LongitudeCreation.ToString();
-                latitudePlaceOfStorageTextbox.Text = pic.LatitudeStorage.ToString();
-                longitudePlaceOfStorageTextbox.Text = pic.LongitudeStorage.ToString();
-                MapYearOfCreationTextbox.Text = pic.YearOfCreation;
-                HeightPictureTextbox.Text = pic.Height.ToString();
-                WidthPictureTextbox.Text = pic.Width.ToString();
-            }*/
 
             NameText.Text = picture.Name;
             AuthorText.Text = picture.Author;
@@ -55,55 +38,30 @@ namespace ImageHandler
 
         private void SavePicture(object sender, RoutedEventArgs e)
         {
-            var db = new LiteDatabase(@"MyData.db");
-            var PicturesCollection = db.GetCollection<Picture>("Pictures");
-
-            if (latitudePlaceOfCreationTextbox.Text.Length>0 &&
-               longitudePlaceOfCreationTextbox.Text.Length > 0 &&
-               latitudePlaceOfStorageTextbox.Text.Length > 0 &&
-               longitudePlaceOfStorageTextbox.Text.Length > 0 &&
-               MapYearOfCreationTextbox.Text.Length > 0 &&
-               HeightPictureTextbox.Text.Length > 0 &&
-               WidthPictureTextbox.Text.Length > 0)
+            try
             {
-                Picture pic = new Picture();
-                pic.LatitudeCreation = Convert.ToSingle(latitudePlaceOfCreationTextbox.Text);
-                pic.LongitudeCreation = Convert.ToSingle(longitudePlaceOfCreationTextbox.Text);
-                pic.LatitudeStorage = Convert.ToSingle(latitudePlaceOfStorageTextbox.Text);
-                pic.LongitudeStorage = Convert.ToSingle(longitudePlaceOfStorageTextbox.Text);
-                pic.YearOfCreation = MapYearOfCreationTextbox.Text;
-                pic.Height = Convert.ToInt32(HeightPictureTextbox.Text);
-                pic.Width = Convert.ToInt32(WidthPictureTextbox.Text);
-                pic.ID = picture.ID;
-               
-
-                picture.LatitudeCreation = pic.LatitudeCreation;
-                picture.LongitudeCreation = pic.LongitudeCreation;
-                picture.LatitudeStorage = pic.LatitudeStorage;
-                picture.LongitudeStorage = pic.LongitudeStorage;
-                picture.YearMap = Convert.ToInt32(pic.YearOfCreation);
-                picture.Height = pic.Height;
-                picture.Width = pic.Width;
-
-                if(PicturesCollection.FindById(picture.ID) != null)
-                {
-                    PicturesCollection.Update(picture);
-                } else
-                {
-                    PicturesCollection.Insert(pic);
-                }
+                picture.Name = NameText.Text;
+                picture.Author = AuthorText.Text;
+                picture.YearOfCreation = YearOfCreationText.Text;
+                picture.Material = MaterialText.Text;
+                picture.Rules = RulesText.Text;
+                picture.Description = DescriptionText.Text;
+                picture.PlaceOfCreation = PlaceOfCreationText.Text;
+                picture.PlaceOfStorage = PlaceOfStorageText.Text;
+                picture.LatitudeCreation = Convert.ToSingle(latitudePlaceOfCreationTextbox.Text.Replace(',', '.'));
+                picture.LongitudeCreation = Convert.ToSingle(longitudePlaceOfCreationTextbox.Text.Replace(',', '.'));
+                picture.LatitudeStorage = Convert.ToSingle(latitudePlaceOfStorageTextbox.Text.Replace(',', '.'));
+                picture.LongitudeStorage = Convert.ToSingle(longitudePlaceOfStorageTextbox.Text.Replace(',', '.'));
+                picture.YearMap = Convert.ToInt32(MapYearOfCreationTextbox.Text);
+                picture.Height = Convert.ToSingle(HeightPictureTextbox.Text.Replace(',', '.'));
+                picture.Width = Convert.ToSingle(WidthPictureTextbox.Text.Replace(',', '.'));
+                Database.ChangePicture(picture);
+                this.Close();
+            }catch (FormatException)
+            {
+                MessageBox.Show("Неверный ввод");
             }
 
-            picture.Name = NameText.Text;
-            picture.Author = AuthorText.Text;
-            picture.YearOfCreation = YearOfCreationText.Text;
-            picture.Material = MaterialText.Text;
-            picture.Rules = RulesText.Text;
-            picture.Description = DescriptionText.Text;
-            picture.PlaceOfCreation = PlaceOfCreationText.Text;
-            picture.PlaceOfStorage = PlaceOfStorageText.Text;
-            Database.ChangePicture(picture);
-            this.Close();
         }
     }
 }

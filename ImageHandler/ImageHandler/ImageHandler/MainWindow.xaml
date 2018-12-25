@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ImageHandler"
-        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
         Title="Главное окно" Height="768" Width="1366">
     <Grid Background="Black">
@@ -22,7 +20,7 @@
                 <RowDefinition Height="3*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" x:Name="MainImage" Source="D:/3.jpg" MouseDown="updatePixel"/>
+            <Image Grid.Row="0" x:Name="MainImage" MouseDown="updatePixel"/>
 
             <StackPanel Grid.Row="1">
                 <Label Content="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage"></Label>

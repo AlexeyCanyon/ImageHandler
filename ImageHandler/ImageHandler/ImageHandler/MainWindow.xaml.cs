@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Mime;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Controls;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Windows.Forms;
@@ -23,8 +21,6 @@ using System.Collections.Concurrent;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using System.Net;
-using System.Diagnostics;
-using LiteDB;
 
 namespace ImageHandler
 {
@@ -42,52 +38,9 @@ namespace ImageHandler
 
         public MainWindow()
         {
-            /*if (filePaths.Length == 0)
-            {
-                pictures = Database.GetPictures();
-                for (int i = 0; i < pictures.Length; i++)
-                {
-                    try
-                    {
-                        BitmapImage bi31 = new BitmapImage();
-                        bi31.BeginInit();
-                        bi31.UriSource = new Uri(pictures[i].File);
-                        client.DownloadFile(bi31.UriSource, DataPath + pictures[i].ID + ".jpg");
-                        bi31.EndInit();
-                    }
-                    catch (Exception e)
-                    {
-
-                    }
-                }
-            }*/
-
-           
             pictures = Database.GetPictures();
             InitializeComponent();
-
-            var db = new LiteDatabase(@"MyData.db");
-            var PicturesCollection = db.GetCollection<Picture>("Pictures");
-
-            if (PicturesCollection.Count() != 0)
-            {
-                for (int i = 0; i < pictures.Length; i++)
-                {
-                    if (PicturesCollection.FindById(pictures[i].ID) != null)
-                    {
-                        Picture tempPicture = PicturesCollection.FindById(pictures[i].ID);
-                        pictures[i].LatitudeCreation = tempPicture.LatitudeCreation;
-                        pictures[i].LongitudeCreation = tempPicture.LongitudeCreation;
-                        pictures[i].LatitudeStorage = tempPicture.LatitudeStorage;
-                        pictures[i].LongitudeStorage = tempPicture.LongitudeStorage;
-                        pictures[i].YearMap = tempPicture.YearMap;
-                        pictures[i].Width = tempPicture.Width;
-                        pictures[i].Height = tempPicture.Height;
-                    }
-                }
-            }
-
-
+            
             if (filePaths.Length != pictures.Length)
             {
                 WebClient client = new WebClient();
@@ -192,12 +145,7 @@ namespace ImageHandler
            if(pictures[mainPictureNum].PercentOfBlue == 0.0 && pictures[mainPictureNum].PercentOfRed== 0.0 && pictures[mainPictureNum].PercentOfGreen == 0.0)
             {
                 FindSaturation(selectedImage.Source.ToString().Substring(8), pictures[mainPictureNum]);
-                var db = new LiteDatabase(@"MyData.db");
-                var PicturesCollection = db.GetCollection<Picture>("Pictures");
-                if (PicturesCollection.FindById(pictures[mainPictureNum].ID) != null)
-                    PicturesCollection.Update(pictures[mainPictureNum]);
-                else
-                    PicturesCollection.Insert(pictures[mainPictureNum]);
+                Database.SetSaturation(pictures[mainPictureNum]);
             }
         }
 

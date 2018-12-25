@@ -379,5 +379,7 @@ C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\I
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\MySql.Data.xml
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ChangePictureWindow.g.cs
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ChangePictureWindow.baml
-C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\LiteDB.dll
-C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\LiteDB.xml
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\ImageHandler.exe.manifest
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\ImageHandler.application
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ImageHandler.exe.manifest
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ImageHandler.application
