@@ -39,7 +39,7 @@ function createMarkers(map) {
                     iconSize: [50, 50]
                 });
 				
-            var markerr = DG.marker([mas[i].longitude, mas[i].latitude], {
+            var markerr = DG.marker([mas[i].latitude, mas[i].longitude], {
                     icon: myIcon
                 });
 			
@@ -124,7 +124,7 @@ DG.then(function() {
                 var count = 0, averageHeight = 0, averageWidth = 0, averagePercentOfRed = 0, averagePercentOfGreen = 0, averagePercentOfBlue = 0;
                 var mats = new Object();
                 for (var i = 0; i < mas.length; i++) { //Перебираем массив точек и проверяем, какие из них попали в выделенную область
-                    if (area.contains([mas[i].longitude, mas[i].latitude])){
+                    if (area.contains([mas[i].latitude, mas[i].longitude])){
                         count++; //Считаем колчиество картин в области
                         averageHeight += mas[i].height; //Высчитываем средни значения
                         averageWidth += mas[i].width;
