@@ -27,8 +27,6 @@
             <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,-60,0"  x:Name="YearOfCreationText"/>
             <Label Content="Материал: " Foreground="Azure" FontFamily="OpenSans" x:Name="MaterialLabel"/>
             <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,-60,0"  x:Name="MaterialText"/>
-            <Label Content="Описание: " Foreground="Azure" FontFamily="OpenSans" x:Name="DescriptionLabel"/>
-            <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,-60,0"  x:Name="DescriptionText"/>
             <Label Content="Правила использования: " Foreground="Azure" FontFamily="OpenSans" x:Name="RulesLabel"/>
             <TextBox Height="23" TextWrapping="Wrap" Margin="10,0,-60,0"  x:Name="RulesText"/>
             <Label Content="Технология: " Foreground="Azure" FontFamily="OpenSans" x:Name="TechnologyLabel"></Label>

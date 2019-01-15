@@ -43,7 +43,6 @@
                     <TextBlock Text="Автор картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="AuthorLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Text="Дата создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="YearOfCreationLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Text="Материал: " Foreground="Azure" FontFamily="OpenSans" x:Name="MaterialLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>
-                    <TextBlock Text="Описание: " Foreground="Azure" FontFamily="OpenSans" x:Name="DescriptionLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Text="Правила использования: " Foreground="Azure" FontFamily="OpenSans" x:Name="RulesLabel" TextWrapping="Wrap" Padding="3" ></TextBlock>
                 </StackPanel>
             </ScrollViewer>

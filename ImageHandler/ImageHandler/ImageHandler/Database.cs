@@ -14,8 +14,8 @@ namespace ImageHandler
             string host = "gf.sfu-kras.ru";
             int port = 3306;
             string database = "gallery";
-            string username = "root";
-            string password = "root";
+            string username = "ImageHandler";
+            string password = "ImageHandler";
             String connString = "Server=" + host + ";Database=" + database
                + ";port=" + port + ";User Id=" + username + ";password=" + password;
             conn = new MySqlConnection(connString);

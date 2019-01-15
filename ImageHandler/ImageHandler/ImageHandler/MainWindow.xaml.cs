@@ -1,6 +1,4 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
@@ -367,7 +365,6 @@ namespace ImageHandler
             AuthorLabel.Text = "Автор картины: " + pictures[mainPictureNum].Author;
             YearOfCreationLabel.Text = "Дата создания: " + pictures[mainPictureNum].YearOfCreation;
             MaterialLabel.Text = "Материал: " + pictures[mainPictureNum].Material;
-            DescriptionLabel.Text = "Описание: " + pictures[mainPictureNum].Description;
             RulesLabel.Text = "Правила использования: " + pictures[mainPictureNum].Rules;
             PercentOfRedLabel.Text = "Насыщенность красного: " + pictures[mainPictureNum].PercentOfRed + "%";
             PercentOfGreenLabel.Text = "Насыщенность зеленого: " + pictures[mainPictureNum].PercentOfGreen + "%";

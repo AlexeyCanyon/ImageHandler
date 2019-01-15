@@ -21,7 +21,6 @@ namespace ImageHandler
             YearOfCreationText.Text = picture.YearOfCreation;
             MaterialText.Text = picture.Material;
             RulesText.Text = picture.Rules;
-            DescriptionText.Text = picture.Description;
             PlaceOfCreationText.Text = picture.PlaceOfCreation;
             PlaceOfStorageText.Text = picture.PlaceOfStorage;
             SourceSizePictureLabel.Content = "Исходные размеры: " + picture.Size;
@@ -45,7 +44,6 @@ namespace ImageHandler
                 picture.YearOfCreation = YearOfCreationText.Text;
                 picture.Material = MaterialText.Text;
                 picture.Rules = RulesText.Text;
-                picture.Description = DescriptionText.Text;
                 picture.PlaceOfCreation = PlaceOfCreationText.Text;
                 picture.PlaceOfStorage = PlaceOfStorageText.Text;
                 picture.LatitudeCreation = Convert.ToSingle(latitudePlaceOfCreationTextbox.Text.Replace(',', '.'));

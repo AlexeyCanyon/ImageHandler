@@ -32,6 +32,7 @@ function createMarkers(map) {
     markers = DG.layerGroup();
     maxYear = document.getElementById('highYear').value;
     minYear = document.getElementById('lowYear').value;
+	var randomNumber = Math.random();
     for (var i = 0; i < mas.length; i++){ //Создание и отображение меток, отображающих картины
         if (mas[i].yearOfCreation <= maxYear && mas[i].yearOfCreation >= minYear){
 			myIcon = DG.icon({
@@ -39,7 +40,7 @@ function createMarkers(map) {
                     iconSize: [50, 50]
                 });
 				
-            var markerr = DG.marker([mas[i].latitude, mas[i].longitude], {
+            var markerr = DG.marker([mas[i].latitude + (Math.random() - 0.5)/10, mas[i].longitude + (Math.random()-0.5)/10], {
                     icon: myIcon
                 });
 			

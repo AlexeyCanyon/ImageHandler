@@ -383,3 +383,5 @@ C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\I
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\bin\x64\Debug\ImageHandler.application
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ImageHandler.exe.manifest
 C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\ImageHandler.application
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\Graphic.g.cs
+C:\Users\vladi\Desktop\Лабоньки\ImageHandler\ImageHandler\ImageHandler\ImageHandler\obj\x64\Debug\Graphic.baml

@@ -28,7 +28,6 @@ namespace ImageHandler
         public string Author { get; set; }
         public string YearOfCreation { get; set; }
         public string Rules { get; set; }
-        public string Description { get; set; }
         public string Material { get; set; }
         public string PlaceOfCreation { get; set; }
         public string PlaceOfStorage { get; set; }
