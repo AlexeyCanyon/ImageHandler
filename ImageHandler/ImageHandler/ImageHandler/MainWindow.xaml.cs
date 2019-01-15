@@ -40,6 +40,11 @@ namespace ImageHandler
         public MainWindow()
         {
             pictures = Database.GetPictures();
+            if(pictures.Length == 0)
+            {
+                this.Close();
+                return;
+            }
             InitializeComponent();
             
             if (filePaths.Length != pictures.Length)
