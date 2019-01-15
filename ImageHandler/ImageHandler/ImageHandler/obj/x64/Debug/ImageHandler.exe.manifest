@@ -42,6 +42,21 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="CefSharp" version="69.0.0.0" publicKeyToken="40C4B6FC221F4138" language="neutral" processorArchitecture="amd64" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="CefSharp.Core" version="69.0.0.0" publicKeyToken="40C4B6FC221F4138" language="neutral" processorArchitecture="amd64" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="CefSharp.Wpf" version="69.0.0.0" publicKeyToken="40C4B6FC221F4138" language="neutral" processorArchitecture="amd64" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Emgu.CV.UI.dll" size="110592">
       <assemblyIdentity name="Emgu.CV.UI" version="3.4.3.3016" publicKeyToken="7281126722AB4438" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -85,7 +100,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>sbfu459Aja1qDy99IQ63MWpNSxWbE3FM8gi3tJY4EuE=</dsig:DigestValue>
+        <dsig:DigestValue>w9EVzlpv/ZGC4SZ1c16qH84/lGwynico5mJdPlum0B8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

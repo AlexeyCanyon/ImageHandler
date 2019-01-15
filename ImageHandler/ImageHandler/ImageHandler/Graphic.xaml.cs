@@ -28,6 +28,16 @@ namespace ImageHandler
         }
         private void Plot2d(object sender, RoutedEventArgs e)
         {
+            if(XAxis2d.SelectedIndex == -1)
+            {
+                System.Windows.Forms.MessageBox.Show("Выберите координату X");
+                return;
+            }
+            if (YAxis2d.SelectedIndex == -1)
+            {
+                System.Windows.Forms.MessageBox.Show("Выберите координату Y");
+                return;
+            }
             double[] xArray = CreateArray(XAxis2d.SelectedIndex);
             double[] yArray = CreateArray(YAxis2d.SelectedIndex);
 
@@ -69,6 +79,21 @@ namespace ImageHandler
 
         private void Plot3d(object sender, RoutedEventArgs e)
         {
+            if (XAxis3d.SelectedIndex == -1)
+            {
+                System.Windows.Forms.MessageBox.Show("Выберите координату X");
+                return;
+            }
+            if (YAxis3d.SelectedIndex == -1)
+            {
+                System.Windows.Forms.MessageBox.Show("Выберите координату Y");
+                return;
+            }
+            if (ZAxis3d.SelectedIndex == -1)
+            {
+                System.Windows.Forms.MessageBox.Show("Выберите координату Z");
+                return;
+            }
             double[] xArray = CreateArray(XAxis3d.SelectedIndex);
             double[] yArray = CreateArray(YAxis3d.SelectedIndex);
             double[] zArray = CreateArray(ZAxis3d.SelectedIndex);

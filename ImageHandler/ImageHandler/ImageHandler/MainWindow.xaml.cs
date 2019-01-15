@@ -50,6 +50,8 @@ namespace ImageHandler
             if (filePaths.Length != pictures.Length)
             {
                 WebClient client = new WebClient();
+                ProgressBarWindow pb = new ProgressBarWindow();
+                pb.Show();
                 for (int i = 0, j = 0; i < pictures.Length; i++)
                 {
                     bool searchID = false;
@@ -65,12 +67,13 @@ namespace ImageHandler
                     {
                         try
                         {
+                            
                             BitmapImage bi31 = new BitmapImage();
                             bi31.BeginInit();
                             bi31.UriSource = new Uri(pictures[i].File);
                             client.DownloadFile(bi31.UriSource, DataPath + pictures[i].ID + ".jpg");
                             bi31.EndInit();
-                            
+                            pb.pbStatus.Value = i / pictures.Length * 100;
                         }
                         catch(Exception e)
                         {
@@ -79,14 +82,19 @@ namespace ImageHandler
                     }
 
                 }
+                pb.Close();
                 client.Dispose();
             }
 
             filePaths = Directory.GetFiles(DataPath);
             if (!(Directory.GetFiles(DataMiniPath).Length == filePaths.Length) || !(Directory.GetFiles(DataMap).Length == filePaths.Length))
             {
+                ProgressBarWindow pb = new ProgressBarWindow();
+                pb.Show();
+                pb.Title = "Генерация миниатюр";
                 for (int i = 0; i < filePaths.Length; i++)
                 {
+
                     if (filePaths[i] != fileMiniPaths[i])
                         ResizeImage(filePaths[i], DataMiniPath + Path.GetFileName(filePaths[i]), 350, 350, false);
                     if (filePaths[i] != fileMap[i])
@@ -97,8 +105,11 @@ namespace ImageHandler
                     {
                         break;
                     }
+                    pb.pbStatus.Value = i / pictures.Length * 100;
                 }
+                pb.Close();
             }
+           
 
             for (int i = 0; i < filePaths.Length; i++)
             {
