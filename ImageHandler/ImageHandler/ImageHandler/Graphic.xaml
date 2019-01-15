@@ -1,0 +1,76 @@
+﻿<Window x:Class="ImageHandler.Graphic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageHandler"
+        mc:Ignorable="d"
+        Title="Графики" Height="350" Width="520">
+    <Grid Margin="0,0,0,90">
+        <Grid.RowDefinitions>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Выберите данные для отображения" HorizontalAlignment="Left" Height="203" Margin="0,10,0,0" VerticalAlignment="Top" Width="497">
+            <Grid HorizontalAlignment="Left" Height="174" Margin="10,10,-5,-3" VerticalAlignment="Top" Width="480">
+                <GroupBox Header="2D график" HorizontalAlignment="Left" Height="157" Margin="10,10,0,0" VerticalAlignment="Top" Width="200">
+                    <Grid HorizontalAlignment="Left" Height="138" VerticalAlignment="Top" Width="190" Margin="0,0,-2,-3">
+                        <TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" TextWrapping="Wrap" Text="Ось X: " VerticalAlignment="Top" RenderTransformOrigin="0.909,-1.083"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="10,47,0,0" TextWrapping="Wrap" Text="Ось Y: " VerticalAlignment="Top" RenderTransformOrigin="0.475,1.875"/>
+                        <Button Content="Показать" HorizontalAlignment="Left" Margin="30,108,0,0" VerticalAlignment="Top" Click="Plot2d"  Foreground="Azure" Background="DimGray" Width="150px"/>
+                        <ComboBox x:Name="XAxis2d" HorizontalAlignment="Left" Margin="52,10,0,0" VerticalAlignment="Top" Width="120">
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность красного цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность синего цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность зеленого цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Высота"/>
+                            <TextBlock TextWrapping="Wrap" Text="Ширина"/>
+                            <TextBlock TextWrapping="Wrap" Text="Год создания"/>
+                        </ComboBox>
+                        <ComboBox x:Name="YAxis2d" HorizontalAlignment="Left" Margin="52,41,0,0" VerticalAlignment="Top" Width="120">
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность красного цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность синего цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность зеленого цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Высота"/>
+                            <TextBlock TextWrapping="Wrap" Text="Ширина"/>
+                            <TextBlock TextWrapping="Wrap" Text="Год создания"/>
+                        </ComboBox>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="3D график" HorizontalAlignment="Left" Height="157" Margin="266,10,0,0" VerticalAlignment="Top" Width="200">
+                    <Grid HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="190" Margin="0,0,-2,0">
+                        <TextBlock HorizontalAlignment="Left" Margin="10,16,0,0" TextWrapping="Wrap" Text="Ось X: " VerticalAlignment="Top" RenderTransformOrigin="0.909,-1.083"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="10,47,0,0" TextWrapping="Wrap" Text="Ось Y: " VerticalAlignment="Top" RenderTransformOrigin="0.475,1.875"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="11,78,0,0" TextWrapping="Wrap" Text="Ось Z: " VerticalAlignment="Top" RenderTransformOrigin="0.475,1.875"/>
+                        <Button Content="Показать" HorizontalAlignment="Left" Margin="30,109,0,0" VerticalAlignment="Top" Click="Plot3d" Foreground="Azure" Background="DimGray" Width="150px"/>
+                        <ComboBox x:Name="XAxis3d" HorizontalAlignment="Left" Margin="52,10,0,0" VerticalAlignment="Top" Width="120">
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность красного цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность синего цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность зеленого цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Высота"/>
+                            <TextBlock TextWrapping="Wrap" Text="Ширина"/>
+                            <TextBlock TextWrapping="Wrap" Text="Год создания"/>
+                        </ComboBox>
+                        <ComboBox x:Name="YAxis3d"  HorizontalAlignment="Left" Margin="52,41,0,0" VerticalAlignment="Top" Width="120">
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность красного цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность синего цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность зеленого цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Высота"/>
+                            <TextBlock TextWrapping="Wrap" Text="Ширина"/>
+                            <TextBlock TextWrapping="Wrap" Text="Год создания"/>
+                        </ComboBox>
+                        <ComboBox x:Name="ZAxis3d"  HorizontalAlignment="Left" Margin="53,72,0,0" VerticalAlignment="Top" Width="120">
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность красного цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность синего цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Насыщенность зеленого цвета"/>
+                            <TextBlock TextWrapping="Wrap" Text="Высота"/>
+                            <TextBlock TextWrapping="Wrap" Text="Ширина"/>
+                            <TextBlock TextWrapping="Wrap" Text="Год создания"/>
+                        </ComboBox>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+
+        </GroupBox>
+    </Grid>
+</Window>

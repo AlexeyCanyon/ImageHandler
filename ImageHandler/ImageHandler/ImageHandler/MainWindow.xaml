@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Главное окно" Height="768" Width="1366">
-    <Grid Background="Black">
+    <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2.5*" />
@@ -22,31 +22,40 @@
             </Grid.RowDefinitions>
             <Image Grid.Row="0" x:Name="MainImage" MouseDown="updatePixel"/>
 
-            <StackPanel Grid.Row="1">
-                <Label Content="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage"></Label>
-                <Label Content="Разрешение файла: " Foreground="Azure" FontFamily="OpenSans" x:Name="resolutionOfImage"></Label>
-                <Label Content="Код текущего пикселя: " Foreground="Azure" FontFamily="OpenSans" x:Name="currentPixel"></Label>
-                <Label Content="Различных цветов в картинке: " Foreground="Azure" FontFamily="OpenSans" x:Name="colorsCount"></Label>
-                <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
-                <Button x:Name="openMap" Content="Открыть карту" Click="OpenMap" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
-                <Button x:Name="changePicture" Content="Редактировать" Click="ChangePicture" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
-                <Button x:Name="findFace" Content="Распознать лица" Click="FindFace" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Margin="250,0,336,0">
-                <Label Content="Название картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="NameLabel"></Label>
-                <Label Content="Автор картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="AuthorLabel"></Label>
-                <Label Content="Дата создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="YearOfCreationLabel"></Label>
-                <Label Content="Материал: " Foreground="Azure" FontFamily="OpenSans" x:Name="MaterialLabel"></Label>
-                <Label Content="Описание: " Foreground="Azure" FontFamily="OpenSans" x:Name="DescriptionLabel"></Label>
-                <Label Content="Правила использования: " Foreground="Azure" FontFamily="OpenSans" x:Name="RulesLabel"></Label>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Margin="639,0,0,0">
-                <Label Content="Насыщенность красного: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfRedLabel"></Label>
-                <Label Content="Насыщенность зеленого: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfGreenLabel"></Label>
-                <Label Content="Насыщенность синего: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfBlueLabel"></Label>
-                <Label Content="Место хранения: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfStorageLabel"></Label>
-                <Label Content="Место создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfCreationLabel"></Label>
-            </StackPanel>
+            <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="0,0,715,0" Background="Black">
+                <StackPanel Width="255"  >
+
+                    <TextBlock Text="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage" Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Разрешение файла: " Foreground="Azure" FontFamily="OpenSans" x:Name="resolutionOfImage" Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <!--<TextBlock Text="Код текущего пикселя: " Foreground="Azure" FontFamily="OpenSans" x:Name="currentPixel" Padding="3" TextWrapping="Wrap"></TextBlock>-->
+                    <!--<TextBlock Text="Различных цветов в картинке: " Foreground="Azure" FontFamily="OpenSans" x:Name="colorsCount" Padding="3" TextWrapping="Wrap"></TextBlock>-->
+                    <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                    <Button x:Name="openMap" Content="Открыть карту" Click="OpenMap" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                    <Button x:Name="changePicture" Content="Редактировать" Click="ChangePicture" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                    <Button x:Name="findFace" Content="Распознать лица" Click="FindFace" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                    <Button x:Name="OpenGraphics" Content="Графики" Click="OpenGraphic" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"/>
+                </StackPanel>
+            </ScrollViewer>
+
+            <ScrollViewer Margin="255,0,296,0"  Grid.Row="1" VerticalScrollBarVisibility="Hidden" Background="Black">
+                <StackPanel  >
+                    <TextBlock Text="Название картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="NameLabel" TextWrapping="Wrap" Padding="3" ></TextBlock>
+                    <TextBlock Text="Автор картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="AuthorLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Дата создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="YearOfCreationLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Материал: " Foreground="Azure" FontFamily="OpenSans" x:Name="MaterialLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Описание: " Foreground="Azure" FontFamily="OpenSans" x:Name="DescriptionLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Правила использования: " Foreground="Azure" FontFamily="OpenSans" x:Name="RulesLabel" TextWrapping="Wrap" Padding="3" ></TextBlock>
+                </StackPanel>
+            </ScrollViewer>
+            <ScrollViewer Margin="674,0,0,0" Grid.Row="1" VerticalScrollBarVisibility="Hidden" Background="Black">
+                <StackPanel  >
+                    <TextBlock Text="Насыщенность красного: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfRedLabel" Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Насыщенность зеленого: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfGreenLabel" Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Насыщенность синего: " Foreground="Azure" FontFamily="OpenSans" x:Name="PercentOfBlueLabel" Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Место хранения: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfStorageLabel" Padding="3" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Text="Место создания: " Foreground="Azure" FontFamily="OpenSans" x:Name="PlaceOfCreationLabel" Padding="3" TextWrapping="Wrap"></TextBlock>
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
 
 

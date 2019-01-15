@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
@@ -21,6 +23,7 @@ using System.Collections.Concurrent;
 using System.Drawing.Imaging;
 using System.Threading.Tasks;
 using System.Net;
+using System.Windows.Controls;
 
 namespace ImageHandler
 {
@@ -77,7 +80,7 @@ namespace ImageHandler
             }
 
             filePaths = Directory.GetFiles(DataPath);
-            if (!(Directory.GetFiles(DataMiniPath) == filePaths) || !(Directory.GetFiles(DataMap) == filePaths))
+            if (!(Directory.GetFiles(DataMiniPath).Length == filePaths.Length) || !(Directory.GetFiles(DataMap).Length == filePaths.Length))
             {
                 for (int i = 0; i < filePaths.Length; i++)
                 {
@@ -87,6 +90,10 @@ namespace ImageHandler
                         ResizeImage(filePaths[i], DataMap + Path.GetFileName(filePaths[i]), 64, 64, false);
                     fileMiniPaths = Directory.GetFiles(DataMiniPath);
                     fileMap = Directory.GetFiles(DataMap);
+                    if ((Directory.GetFiles(DataMiniPath).Length == filePaths.Length) && (Directory.GetFiles(DataMap).Length == filePaths.Length))
+                    {
+                        break;
+                    }
                 }
             }
 
@@ -101,7 +108,32 @@ namespace ImageHandler
                 image.Name = "id" + Path.GetFileNameWithoutExtension(filePaths[i]);
                 image.Source = bi31;
                 image.HorizontalAlignment = HorizontalAlignment.Center;
-                imagesPanel.Children.Add(image);
+
+                Grid grid = new Grid();
+                ColumnDefinition colDef1 = new ColumnDefinition();
+                grid.ColumnDefinitions.Add(colDef1);
+                RowDefinition rowDef1 = new RowDefinition();
+                RowDefinition rowDef2 = new RowDefinition();
+                grid.RowDefinitions.Add(rowDef1);
+                grid.RowDefinitions.Add(rowDef2);
+                TextBlock txt1 = new TextBlock();
+                for (int q = 0; q < pictures.Length; q++)
+                {
+                    if (image.Name.Substring(2) == pictures[q].ID)
+                    {
+                        txt1.Text = pictures[q].Name;
+                    }
+                }
+                txt1.TextWrapping = TextWrapping.Wrap;
+                txt1.FontSize = 16;
+                txt1.HorizontalAlignment = HorizontalAlignment.Center;
+                txt1.FontWeight = FontWeights.Bold;
+                Grid.SetRow(txt1, 0);
+                Grid.SetRow(image, 1);
+                grid.Children.Add(txt1);
+                grid.Children.Add(image);
+                imagesPanel.Children.Add(grid);
+
             }
 
             mainPictureNum = 0;
@@ -116,6 +148,8 @@ namespace ImageHandler
 
         private void ImageClicked(object sender, RoutedEventArgs e)
         {
+            if (!(e.Source.GetType() == typeof(ImageWPF)))
+                return;
             ImageWPF selectedImage = (ImageWPF) e.Source;
             BitmapImage bm = new BitmapImage();
             for (int i = 0; i < pictures.Length; i++)
@@ -147,6 +181,8 @@ namespace ImageHandler
                 FindSaturation(selectedImage.Source.ToString().Substring(8), pictures[mainPictureNum]);
                 Database.SetSaturation(pictures[mainPictureNum]);
             }
+            sizeOfImage.Text = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
+            resolutionOfImage.Text = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
         }
 
         private void FindSaturation(string selectImagePath, Picture picture)
@@ -210,11 +246,10 @@ namespace ImageHandler
             picture.PercentOfGreen = procentGreen;
             picture.PercentOfBlue = procentBlue;
 
-            PercentOfRedLabel.Content = "Насыщенность красного: " + procentRed + "%";
-            PercentOfGreenLabel.Content = "Насыщенность зеленого: " + procentGreen + "%";
-            PercentOfBlueLabel.Content = "Насыщенность синего: " + procentBlue + "%";
-            sizeOfImage.Content = "Размер файла в пикселях: " + (sourceBitmap.Height * sourceBitmap.Width);
-            resolutionOfImage.Content = "Разрешение файла: " + sourceBitmap.Width + "x" + sourceBitmap.Height;
+            PercentOfRedLabel.Text = "Насыщенность красного: " + procentRed + "%";
+            PercentOfGreenLabel.Text = "Насыщенность зеленого: " + procentGreen + "%";
+            PercentOfBlueLabel.Text = "Насыщенность синего: " + procentBlue + "%";
+           
         }
 
         private void AddPictures(object sender, RoutedEventArgs e)
@@ -244,7 +279,7 @@ namespace ImageHandler
         {
             System.Windows.Point p = e.GetPosition(MainImage);
             Bitmap bmp = new Bitmap(MainImage.Source.ToString().Substring(8));
-            currentPixel.Content = "Код текущего пикселя: " + ColorTranslator.ToHtml(bmp.GetPixel((int) Math.Round (p.X), (int) Math.Round (p.Y)));
+           // currentPixel.Content = "Код текущего пикселя: " + ColorTranslator.ToHtml(bmp.GetPixel((int) Math.Round (p.X), (int) Math.Round (p.Y)));
         }
 
         private void OpenMap(object sender, RoutedEventArgs e)
@@ -328,17 +363,17 @@ namespace ImageHandler
 
         private void UpdateMetaData()
         {
-            NameLabel.Content = "Название картины: " + pictures[mainPictureNum].Name;
-            AuthorLabel.Content = "Автор картины: " + pictures[mainPictureNum].Author;
-            YearOfCreationLabel.Content = "Дата создания: " + pictures[mainPictureNum].YearOfCreation;
-            MaterialLabel.Content = "Материал: " + pictures[mainPictureNum].Material;
-            DescriptionLabel.Content = "Описание: " + pictures[mainPictureNum].Description;
-            RulesLabel.Content = "Правила использования: " + pictures[mainPictureNum].Rules;
-            PercentOfRedLabel.Content = "Насыщенность красного: " + pictures[mainPictureNum].PercentOfRed + "%";
-            PercentOfGreenLabel.Content = "Насыщенность зеленого: " + pictures[mainPictureNum].PercentOfGreen + "%";
-            PercentOfBlueLabel.Content = "Насыщенность синего: " + pictures[mainPictureNum].PercentOfBlue + "%";
-            PlaceOfStorageLabel.Content = "Место хранения: " + pictures[mainPictureNum].PlaceOfStorage;
-            PlaceOfCreationLabel.Content = "Место создания: " + pictures[mainPictureNum].PlaceOfCreation;
+            NameLabel.Text = "Название картины: " + pictures[mainPictureNum].Name;
+            AuthorLabel.Text = "Автор картины: " + pictures[mainPictureNum].Author;
+            YearOfCreationLabel.Text = "Дата создания: " + pictures[mainPictureNum].YearOfCreation;
+            MaterialLabel.Text = "Материал: " + pictures[mainPictureNum].Material;
+            DescriptionLabel.Text = "Описание: " + pictures[mainPictureNum].Description;
+            RulesLabel.Text = "Правила использования: " + pictures[mainPictureNum].Rules;
+            PercentOfRedLabel.Text = "Насыщенность красного: " + pictures[mainPictureNum].PercentOfRed + "%";
+            PercentOfGreenLabel.Text = "Насыщенность зеленого: " + pictures[mainPictureNum].PercentOfGreen + "%";
+            PercentOfBlueLabel.Text = "Насыщенность синего: " + pictures[mainPictureNum].PercentOfBlue + "%";
+            PlaceOfStorageLabel.Text = "Место хранения: " + pictures[mainPictureNum].PlaceOfStorage;
+            PlaceOfCreationLabel.Text = "Место создания: " + pictures[mainPictureNum].PlaceOfCreation;
         }
 
         private MapPicture[] GetCollectionForMap()
@@ -364,5 +399,10 @@ namespace ImageHandler
             return mas;
         }
 
+        private void OpenGraphic(object sender, RoutedEventArgs e)
+        {
+            Graphic windowGraph = new Graphic(pictures);
+            windowGraph.Show();
+        }
     }
 }
