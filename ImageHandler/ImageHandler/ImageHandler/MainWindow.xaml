@@ -10,7 +10,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="2.5*" />
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Visible">
             <StackPanel Image.MouseDown="ImageClicked" x:Name="imagesPanel">
             </StackPanel>
         </ScrollViewer>
@@ -22,14 +22,14 @@
             </Grid.RowDefinitions>
             <Image Grid.Row="0" x:Name="MainImage" MouseDown="updatePixel"/>
 
-            <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="0,0,715,0" Background="Black">
+            <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Hidden" Margin="0,0,707,0" Background="Black">
                 <StackPanel Width="255"  >
 
                     <TextBlock Text="Размер файла в пикселях: " Foreground="Azure" FontFamily="OpenSans" x:Name="sizeOfImage" Padding="3" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Text="Разрешение файла: " Foreground="Azure" FontFamily="OpenSans" x:Name="resolutionOfImage" Padding="3" TextWrapping="Wrap"></TextBlock>
                     <!--<TextBlock Text="Код текущего пикселя: " Foreground="Azure" FontFamily="OpenSans" x:Name="currentPixel" Padding="3" TextWrapping="Wrap"></TextBlock>-->
                     <!--<TextBlock Text="Различных цветов в картинке: " Foreground="Azure" FontFamily="OpenSans" x:Name="colorsCount" Padding="3" TextWrapping="Wrap"></TextBlock>-->
-                    <Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
+                    <!--<Button x:Name="addPictures" Content="Добавить изображения" Click="AddPictures" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>-->
                     <Button x:Name="openMap" Content="Открыть карту" Click="OpenMap" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
                     <Button x:Name="changePicture" Content="Редактировать" Click="ChangePicture" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
                     <Button x:Name="findFace" Content="Распознать лица" Click="FindFace" Foreground="Azure" Background="DimGray" Width="150px" HorizontalAlignment="Left"></Button>
@@ -37,7 +37,7 @@
                 </StackPanel>
             </ScrollViewer>
 
-            <ScrollViewer Margin="255,0,296,0"  Grid.Row="1" VerticalScrollBarVisibility="Hidden" Background="Black">
+            <ScrollViewer Margin="255,0,287,0"  Grid.Row="1" VerticalScrollBarVisibility="Hidden" Background="Black">
                 <StackPanel  >
                     <TextBlock Text="Название картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="NameLabel" TextWrapping="Wrap" Padding="3" ></TextBlock>
                     <TextBlock Text="Автор картины: " Foreground="Azure" FontFamily="OpenSans" x:Name="AuthorLabel"  Padding="3" TextWrapping="Wrap"></TextBlock>

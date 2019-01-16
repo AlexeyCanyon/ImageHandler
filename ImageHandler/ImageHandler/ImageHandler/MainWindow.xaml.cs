@@ -50,8 +50,7 @@ namespace ImageHandler
             if (filePaths.Length != pictures.Length)
             {
                 WebClient client = new WebClient();
-                ProgressBarWindow pb = new ProgressBarWindow();
-                pb.Show();
+               
                 for (int i = 0, j = 0; i < pictures.Length; i++)
                 {
                     bool searchID = false;
@@ -73,16 +72,15 @@ namespace ImageHandler
                             bi31.UriSource = new Uri(pictures[i].File);
                             client.DownloadFile(bi31.UriSource, DataPath + pictures[i].ID + ".jpg");
                             bi31.EndInit();
-                            pb.pbStatus.Value = i / pictures.Length * 100;
                         }
                         catch(Exception e)
                         {
                             MessageBox.Show("Ошибка загрузки картины " + pictures[i].ID +  " из базы: " + e.Message);
                         }
                     }
-
+                    
                 }
-                pb.Close();
+                
                 client.Dispose();
             }
 
